@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Sheep" format=3 uid="uid://bhq07n5h0xja8"]
+
+[ext_resource type="Script" uid="uid://dgjbvirn0m04f" path="res://scripts/animals/sheep.gd" id="1_x58r2"]
+[ext_resource type="Texture2D" uid="uid://dup7b4id3w5yh" path="res://sprites/animals/sheep.png" id="2_abb5o"]
+
+[resource]
+script = ExtResource("1_x58r2")
+sprite = ExtResource("2_abb5o")
+name = "Bear"
+health = 3
+attack = 2
+metadata/_custom_type_script = "uid://dgjbvirn0m04f"

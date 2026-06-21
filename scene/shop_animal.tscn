@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d07ww4qpndext"]
+
+[ext_resource type="Script" uid="uid://c7dulnm0s4yn7" path="res://scripts/shop_animal.gd" id="1_eudsg"]
+[ext_resource type="Texture2D" uid="uid://0c1nb30suhhn" path="res://ui/pedestal.png" id="3_3eo0h"]
+[ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="3_uqts0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3eo0h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uqts0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kfh8d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48yp4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_56qlo"]
+
+[node name="ShopAnimal" type="Button" unique_id=1083429280 node_paths=PackedStringArray("render")]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 526.0
+offset_top = 273.0
+offset_right = -526.0
+offset_bottom = -275.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3eo0h")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uqts0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_kfh8d")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_48yp4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_56qlo")
+script = ExtResource("1_eudsg")
+render = NodePath("AnimalRender")
+
+[node name="PedestalTexture" type="TextureRect" parent="." unique_id=1078980734]
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3eo0h")
+
+[node name="AnimalRender" parent="." unique_id=1631498872 instance=ExtResource("3_uqts0")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

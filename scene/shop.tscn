@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://c2klcsuxpstv4"]
+
+[ext_resource type="Texture2D" uid="uid://cct3gtqk5gihw" path="res://ui/background.jpeg" id="1_0wha2"]
+[ext_resource type="Script" uid="uid://bw1fnxba7mtjv" path="res://scripts/market.gd" id="1_tartn"]
+[ext_resource type="Texture2D" uid="uid://bjmcesu7rqien" path="res://ui/buttons/splitted/tile004.png" id="3_brg4d"]
+[ext_resource type="Script" uid="uid://cq0muytbo3g0x" path="res://scripts/timer.gd" id="3_phbgv"]
+[ext_resource type="FontFile" uid="uid://xasfapmisv4a" path="res://ui/fonts/LilitaOne-Regular.ttf" id="4_0wha2"]
+[ext_resource type="Texture2D" uid="uid://cs6uggj4q3q5y" path="res://ui/buttons/splitted/tile001.png" id="6_prb2b"]
+[ext_resource type="Texture2D" uid="uid://hvmanxa5ov6c" path="res://ui/signs/wooden_sign.png" id="6_tartn"]
+[ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="7_08gde"]
+[ext_resource type="Texture2D" uid="uid://227ufwadl078" path="res://ui/icons/coin.png" id="7_pd0vs"]
+[ext_resource type="Script" uid="uid://bhiuv18v2smdu" path="res://scripts/coin_label.gd" id="8_tartn"]
+[ext_resource type="Script" uid="uid://k4478ff1y5sq" path="res://scripts/reload_button.gd" id="11_mskdj"]
+[ext_resource type="Texture2D" uid="uid://b0eafvr1kamx4" path="res://ui/icons/refresh_icon.png" id="11_s07y5"]
+
+[node name="Shop" type="Control" unique_id=1744200851 node_paths=PackedStringArray("coin_label", "shop_holder", "team_holder")]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_tartn")
+coin_label = NodePath("Coins/HBoxContainer/Label")
+shop_holder = NodePath("Shop")
+team_holder = NodePath("Team")
+
+[node name="Background" type="TextureRect" parent="." unique_id=2053510268]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0wha2")
+expand_mode = 2
+
+[node name="Timer" type="TextureRect" parent="." unique_id=1383256632]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -237.0
+offset_top = -20.0
+offset_right = 43.0
+offset_bottom = 100.0
+grow_horizontal = 0
+texture = ExtResource("3_brg4d")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Timer" unique_id=967143807]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -10.0
+offset_right = 1.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_0wha2")
+theme_override_font_sizes/font_size = 50
+text = "0:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_phbgv")
+
+[node name="Title" type="TextureRect" parent="." unique_id=2006936116]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -140.0
+offset_right = 140.0
+offset_bottom = 120.0
+grow_horizontal = 2
+texture = ExtResource("6_tartn")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Title" unique_id=1509745801]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.8539429
+offset_top = -2.0
+offset_right = -0.8539429
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_0wha2")
+theme_override_font_sizes/font_size = 50
+text = "Market"
+label_settings = ExtResource("7_08gde")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coins" type="TextureRect" parent="." unique_id=273200554]
+layout_mode = 1
+offset_left = -35.0
+offset_top = -20.0
+offset_right = 245.0
+offset_bottom = 100.0
+texture = ExtResource("6_prb2b")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Coins" unique_id=1881201689]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -4.0
+offset_right = 8.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="Coins/HBoxContainer" unique_id=527379365]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_0wha2")
+theme_override_font_sizes/font_size = 50
+text = "12"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_tartn")
+
+[node name="TextureRect" type="TextureRect" parent="Coins/HBoxContainer" unique_id=1876825497]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_pd0vs")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Team" type="HBoxContainer" parent="." unique_id=1422617127]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = 394.0
+offset_right = -35.0
+offset_bottom = -174.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="Shop" type="HBoxContainer" parent="." unique_id=1423777634]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 47.0
+offset_top = -121.0
+offset_right = -47.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="RefreshButton" type="TextureButton" parent="Shop" unique_id=261448006]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("11_s07y5")
+stretch_mode = 0
+script = ExtResource("11_mskdj")
+
+[connection signal="pressed" from="Shop/RefreshButton" to="Shop/RefreshButton" method="_on_pressed"]

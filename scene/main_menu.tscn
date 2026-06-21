@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://detgrp7eoob5"]
+
+[ext_resource type="Script" uid="uid://dt6gcxl3hx72t" path="res://scripts/main_menu.gd" id="1_0iwki"]
+[ext_resource type="Texture2D" uid="uid://cct3gtqk5gihw" path="res://ui/background.jpeg" id="1_2fwvj"]
+[ext_resource type="Texture2D" uid="uid://tivbbbsn3ov6" path="res://ui/buttons/splitted/tile006.png" id="2_0iwki"]
+[ext_resource type="FontFile" uid="uid://xasfapmisv4a" path="res://ui/fonts/LilitaOne-Regular.ttf" id="3_sepwh"]
+[ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="5_sepwh"]
+
+[node name="MainMenu" type="Control" unique_id=1975930055]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0iwki")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1606818445]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2fwvj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=933349676]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Server" type="TextureButton" parent="VBoxContainer" unique_id=319228869]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_0iwki")
+
+[node name="Label" type="Label" parent="VBoxContainer/Server" unique_id=1399952022]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -9.5
+offset_right = 23.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 70
+text = "Server"
+label_settings = ExtResource("5_sepwh")
+
+[node name="Client" type="TextureButton" parent="VBoxContainer" unique_id=1540545901]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_0iwki")
+
+[node name="Label" type="Label" parent="VBoxContainer/Client" unique_id=1879889028]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -9.5
+offset_right = 23.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 70
+text = "Client"
+label_settings = ExtResource("5_sepwh")
+
+[connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
+[connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]

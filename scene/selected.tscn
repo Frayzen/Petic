@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://drn82gtql1c8t"]
+
+[ext_resource type="Texture2D" uid="uid://51nmefswwknd" path="res://ui/icons/selection.png" id="1_e3uff"]
+
+[node name="Control" type="TextureRect" unique_id=1732361594]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 526.0
+offset_top = 274.0
+offset_right = -526.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e3uff")

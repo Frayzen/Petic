@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://b6qrl3sfrsltd"]
+
+[ext_resource type="Texture2D" uid="uid://0c1nb30suhhn" path="res://ui/pedestal.png" id="1_5bjpw"]
+[ext_resource type="Script" uid="uid://cphee5awuyry3" path="res://scripts/team_animal.gd" id="1_8ivbl"]
+[ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="3_atsrv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ivbl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_atsrv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etghj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_66k5a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l84fo"]
+
+[node name="TeamAnimal" type="Button" unique_id=1517834294 node_paths=PackedStringArray("render")]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+propagate_maximum_size = true
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8ivbl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_atsrv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_etghj")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_66k5a")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l84fo")
+script = ExtResource("1_8ivbl")
+render = NodePath("Animal")
+
+[node name="PedestalTexture" type="TextureRect" parent="." unique_id=1145297668]
+custom_minimum_size = Vector2(60, 60)
+custom_maximum_size = Vector2(60, 60)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5bjpw")
+
+[node name="Animal" parent="." unique_id=455260283 instance=ExtResource("3_atsrv")]
+layout_mode = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
