@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://duc4i3hgxs5lw"]
+
+[ext_resource type="Texture2D" uid="uid://r7qdy1cdt87d" path="res://ui/icons/empty_star.png" id="1_d5v1o"]
+
+[node name="EmptyStar" type="TextureRect" unique_id=1955651940]
+custom_minimum_size = Vector2(30, 30)
+custom_maximum_size = Vector2(30, 30)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d5v1o")
+expand_mode = 2

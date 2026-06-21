@@ -3,6 +3,9 @@ extends Control
 
 static var instance: Market
 
+
+static var selected = null
+
 @export var coin_label : Label
 @export var shop_holder : HBoxContainer
 @export var team_holder : HBoxContainer
@@ -31,9 +34,14 @@ func buy(team_animal: TeamAnimal, shop_animal : ShopAnimal) -> bool:
 	if coins < 3:
 		return false
 	if team_animal.data != null:
+		if team_animal.data.name == shop_animal.data.name:
+			coins -= 3
+			team_animal.increaseXp()
+			shop_animal.bought()
+			return true
 		return false
 	coins -= 3
-	team_animal.update(shop_animal.data.duplicate())
+	team_animal.update(shop_animal.data)
 	shop_animal.bought()
 	return true
 
@@ -43,4 +51,11 @@ func refresh() -> bool:
 	for shop_animal in shop_animals:
 		shop_animal.generate()
 	coins -= 1
+	if selected != null and selected is ShopAnimal:
+		selected = null
 	return true
+
+func _unhandled_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			selected = null

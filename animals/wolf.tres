@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="Wolf" format=3 uid="uid://c3048olreravw"]
 
 [ext_resource type="Script" uid="uid://dpctfpr5cqgff" path="res://scripts/animals/wolf.gd" id="1_6mo0l"]
-[ext_resource type="Texture2D" uid="uid://ba5edlefjsuiy" path="res://sprites/animals/wolf.png" id="2_subpb"]
+[ext_resource type="Texture2D" uid="uid://ba5edlefjsuiy" path="res://ui/animals/wolf.png" id="2_subpb"]
 
 [resource]
 script = ExtResource("1_6mo0l")
 sprite = ExtResource("2_subpb")
 name = "Wolf"
-health = 5
-attack = 5
+baseHealth = 5
+baseAttack = 4
 metadata/_custom_type_script = "uid://dpctfpr5cqgff"

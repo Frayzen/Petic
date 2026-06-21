@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://do8wuxlbe70kt"]
+
+[ext_resource type="Script" uid="uid://40rc7x07evlw" path="res://scripts/fighting_manager.gd" id="1_1hhop"]
+[ext_resource type="Texture2D" uid="uid://oyrhq6k11oes" path="res://ui/fighting_bg.png" id="1_fj7g7"]
+[ext_resource type="Texture2D" uid="uid://b3jeepxdvmg7x" path="res://ui/icons/attack.png" id="4_hp4i3"]
+[ext_resource type="LabelSettings" uid="uid://b7s73no7jxd8n" path="res://settings/label_damage.tres" id="5_xs0qa"]
+
+[node name="Fight" type="Control" unique_id=1799241028 node_paths=PackedStringArray("hostTeam", "otherTeam", "otherDamage", "otherDamageLabel", "hostDamage", "hostDamageLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_1hhop")
+hostTeam = NodePath("HostTeam")
+otherTeam = NodePath("OtherTeam")
+otherDamage = NodePath("DamageOther")
+otherDamageLabel = NodePath("DamageOther/Label")
+hostDamage = NodePath("DamageHost")
+hostDamageLabel = NodePath("DamageHost/Label")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=683411764]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fj7g7")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="OtherTeam" type="HBoxContainer" parent="." unique_id=62669626]
+custom_minimum_size = Vector2(0, 100)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.532
+offset_left = 30.0
+offset_top = 80.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+layout_direction = 2
+theme_override_constants/separation = 20
+
+[node name="HostTeam" type="HBoxContainer" parent="." unique_id=713308173]
+custom_minimum_size = Vector2(0, 100)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = 80.0
+offset_bottom = 200.0
+layout_direction = 3
+theme_override_constants/separation = 20
+
+[node name="DamageHost" type="TextureRect" parent="." unique_id=509779006]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -77.0
+offset_right = -28.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hp4i3")
+
+[node name="Label" type="Label" parent="DamageHost" unique_id=1306068355]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-5"
+label_settings = ExtResource("5_xs0qa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageOther" type="TextureRect" parent="." unique_id=231107456]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 15.0
+offset_top = -77.0
+offset_right = 138.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hp4i3")
+
+[node name="Label" type="Label" parent="DamageOther" unique_id=2067380626]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-5"
+label_settings = ExtResource("5_xs0qa")
+horizontal_alignment = 1
+vertical_alignment = 1
