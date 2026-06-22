@@ -14,7 +14,6 @@ var player_id := str(randi())
 func _process(delta):
 	if multiplayer.multiplayer_peer == null:
 		return
-
 	if is_server and timer_running:
 		timer -= delta
 
@@ -60,17 +59,79 @@ func start_client():
 func sync_timer(t: float):
 	timer = t
 
+var hostTeam = null
+var otherTeam = null
+var sender_ids = []  # Track who has sent data
 
 @rpc("any_peer", "reliable", "call_local")
-func send_round_data(data: String):
-	print("Received from peer: ", data)
+func send_round_data(json_data: String):
+	var json = JSON.new()
+	var error = json.parse(json_data)
+	
+	if error == OK:
+		var received_array = json.data  # Array of dictionaries
+		print("Received data from peer: ", multiplayer.get_remote_sender_id())
+		
+		# Convert dictionaries back to AnimalData objects
+		var animals = []
+		for dict in received_array:
+			var animal_data = AnimalData.from_dict(dict)
+			animals.append(animal_data)
+		
+		print("Deserialized ", animals.size(), " animals")
+		
+		process_received_data(animals)
+	else:
+		print("Failed to parse JSON: ", json.get_error_message())
+
+func process_received_data(animals: Array):
+	for animal in animals:
+		print("Received animal: ", animal.name, " HP: ", animal.health)
 
 
-@rpc("authority")
-func client_send_data():
-	send_round_data.rpc_id(1, "Hello World") # send to server (peer 1 usually)
-
+#     var json = JSON.new()
+#     var error = json.parse(dataRcv)
+#     assert(error == OK)
+#     var data = json.data
+#     var sender_id = multiplayer.get_remote_sender_id()
+#     var peer_id = multiplayer.get_unique_id()
+	
+#     # Check if this is the local peer
+#     if sender_id == 0 or sender_id == peer_id:
+#         # Called locally
+#         hostTeam = data
+#         print("RECEIVED HOST (local)")
+#     else:
+#         # Called remotely
+#         otherTeam = data
+#         print("RECEIVED OTHER from peer: ", sender_id)
+#     print(data)
+#     for d in data:
+#         print(d.name)
+	
+#     sender_ids.append(sender_id)
+	
+#     if otherTeam != null and hostTeam != null:
+#         print("LETS GO")
+#         # Reset for next round
+#         hostTeam = null
+#         otherTeam = null
+#         sender_ids = []
 
 func _end_round():
-	rpc("client_send_data")
-	client_send_data()
+	print("END ROUND")
+	
+	var datas = []  # Untyped array
+	for animal in Market.instance.team_animals:
+		if animal.data != null:
+			# Convert AnimalData to dictionary
+			datas.append(animal.data.to_dict())
+	
+	# Convert to JSON
+	var json_string = JSON.stringify(datas)
+	print("SENDING: " + json_string)
+	send_round_data.rpc(json_string)
+
+func cancelConnection():
+	multiplayer.multiplayer_peer.free()
+	multiplayer.multiplayer_peer = null

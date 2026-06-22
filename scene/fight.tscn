@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b3jeepxdvmg7x" path="res://ui/icons/attack.png" id="4_hp4i3"]
 [ext_resource type="Script" uid="uid://w8irmuo3s0u6" path="res://scripts/fighting_team_manager.gd" id="4_xs0qa"]
 [ext_resource type="LabelSettings" uid="uid://b7s73no7jxd8n" path="res://settings/label_damage.tres" id="5_xs0qa"]
+[ext_resource type="Script" uid="uid://dn5no20c3u7ur" path="res://scripts/speed_slider.gd" id="6_4qica"]
 
 [node name="Fight" type="Control" unique_id=1799241028 node_paths=PackedStringArray("hostTeam", "otherTeam")]
 layout_mode = 3
@@ -44,7 +45,7 @@ offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 layout_direction = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 0
 script = ExtResource("4_xs0qa")
 opponentTeam = NodePath("../HostTeam")
 
@@ -61,7 +62,7 @@ offset_left = 30.0
 offset_top = 80.0
 offset_bottom = 200.0
 layout_direction = 3
-theme_override_constants/separation = 20
+theme_override_constants/separation = 0
 script = ExtResource("4_xs0qa")
 isHost = true
 opponentTeam = NodePath("../OtherTeam")
@@ -93,3 +94,19 @@ text = "-5"
 label_settings = ExtResource("5_xs0qa")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SpeedSlider" type="HSlider" parent="." unique_id=273752586]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -212.0
+offset_top = 26.0
+offset_right = 214.0
+offset_bottom = 42.0
+grow_horizontal = 2
+max_value = 3.0
+value = 1.0
+scrollable = false
+tick_count = 20
+script = ExtResource("6_4qica")

@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-registery="*uid://dp3lau3meji44"
+animalRegistery="*uid://dp3lau3meji44"
 NetworkHandler="*uid://bh7jugqmv5niq"
 
 [display]

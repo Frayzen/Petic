@@ -1,7 +1,7 @@
 class_name FightingManager
 extends Control
 
-const animationSpeed : float = 0.2
+var animationSpeed : float = 0.2
 
 static var instance: FightingManager
 
@@ -9,24 +9,27 @@ static var instance: FightingManager
 @export var otherTeam : FightingTeamManager
 
 func getAllAnimals() -> Array[FightingAnimal]:
-	return hostTeam.animals + otherTeam.animals
+    return hostTeam.animals + otherTeam.animals
 
 func _ready() -> void:
-	instance = self
-	for animal in getAllAnimals():
-		animal.render.animator.speed_scale = animationSpeed
-	fight()
+    instance = self
+    fight()
+
+func updateAnimationSpeed(newValue : float):
+    animationSpeed = newValue
+    for animal in getAllAnimals():
+        animal.render.animator.speed_scale = animationSpeed
 
 
 func mutualAttack():
-	hostTeam.front().attack(otherTeam.front())
-	otherTeam.front().attack(hostTeam.front())
-	await AsyncUtils.await_all([
-		hostTeam.front().endOfAttack,
-		otherTeam.front().endOfAttack,
-	])
+    hostTeam.front().attack(otherTeam.front())
+    otherTeam.front().attack(hostTeam.front())
+    await AsyncUtils.await_all([
+        hostTeam.front().endOfAttack,
+        otherTeam.front().endOfAttack,
+    ])
 func fight():
-	while true:
-		await mutualAttack()
-		if hostTeam.animals.is_empty() or otherTeam.animals.is_empty():
-			return
+    while true:
+        await mutualAttack()
+        if hostTeam.animals.is_empty() or otherTeam.animals.is_empty():
+            return

@@ -5,8 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://tivbbbsn3ov6" path="res://ui/buttons/splitted/tile006.png" id="2_0iwki"]
 [ext_resource type="FontFile" uid="uid://xasfapmisv4a" path="res://ui/fonts/LilitaOne-Regular.ttf" id="3_sepwh"]
 [ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="5_sepwh"]
+[ext_resource type="Texture2D" uid="uid://b0cl7leo2j54" path="res://ui/buttons/splitted/tile002.png" id="6_14wem"]
+[ext_resource type="Texture2D" uid="uid://bcvaw2dnesobg" path="res://ui/buttons/splitted/tile007.png" id="7_2atga"]
+[ext_resource type="LabelSettings" uid="uid://b7s73no7jxd8n" path="res://settings/label_damage.tres" id="8_by01r"]
 
-[node name="MainMenu" type="Control" unique_id=1975930055]
+[node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("waitingIndicator", "waitingIndicatorLabel", "buttonContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +17,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0iwki")
+waitingIndicator = NodePath("WaitingIndicator")
+waitingIndicatorLabel = NodePath("WaitingIndicator/Label")
+buttonContainer = NodePath("VBoxContainer")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1606818445]
 layout_mode = 1
@@ -82,5 +88,68 @@ theme_override_font_sizes/font_size = 70
 text = "Client"
 label_settings = ExtResource("5_sepwh")
 
+[node name="WaitingIndicator" type="TextureButton" parent="." unique_id=842889524]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -351.0
+offset_top = -110.0
+offset_right = 351.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_14wem")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="WaitingIndicator" unique_id=243118446]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 70
+text = "Waiting for XXX..."
+label_settings = ExtResource("5_sepwh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="WaitingIndicator" unique_id=105613558]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = 21.0
+offset_right = 125.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("7_2atga")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="WaitingIndicator/TextureButton" unique_id=856395712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cancel"
+label_settings = ExtResource("8_by01r")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
 [connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="WaitingIndicator/TextureButton" to="." method="_on_cacnel_button_pressed"]

@@ -4,14 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="1_f140u"]
 
 [node name="FightingAnimal" type="Control" unique_id=1925862657 node_paths=PackedStringArray("render", "damageSpawner")]
-custom_maximum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(120, 100)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 526.0
 offset_top = 274.0
-offset_right = -526.0
+offset_right = -506.0
 offset_bottom = -274.0
 grow_horizontal = 2
 grow_vertical = 2

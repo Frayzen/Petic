@@ -42,7 +42,7 @@ func _on_pressed() -> void:
         Market.selected = null
 
 func generate():
-    data = registery.pickRandom()
+    data = animalRegistery.pickRandom()
     render.setData(data)
     render.visible = true
 
