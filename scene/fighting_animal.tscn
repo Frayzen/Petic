@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://svvolxfw8rqd"]
 
-[ext_resource type="Script" uid="uid://dwmvssvea0ckn" path="res://scripts/fighting_animal.gd" id="1_3h84c"]
+[ext_resource type="Script" uid="uid://b0elf4fk022cn" path="res://scripts/fighting_animal.gd" id="1_3h84c"]
 [ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="1_f140u"]
 
-[node name="FightingAnimal" type="Control" unique_id=1925862657 node_paths=PackedStringArray("render")]
-custom_minimum_size = Vector2(100, 100)
+[node name="FightingAnimal" type="Control" unique_id=1925862657 node_paths=PackedStringArray("render", "damageSpawner")]
 custom_maximum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 15
@@ -20,6 +19,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_3h84c")
 render = NodePath("AnimalRender")
+damageSpawner = NodePath("DamageSpawner")
 
 [node name="AnimalRender" parent="." unique_id=1631498872 instance=ExtResource("1_f140u")]
 layout_mode = 1
@@ -28,3 +28,17 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="DamageSpawner" type="Control" parent="." unique_id=380620358]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -162.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2

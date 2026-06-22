@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dxy4oaw2plmjw"]
+
+[ext_resource type="Texture2D" uid="uid://b3jeepxdvmg7x" path="res://ui/icons/attack.png" id="1_5mweu"]
+[ext_resource type="Script" uid="uid://dxb1lknp50o76" path="res://scripts/damage_indicator.gd" id="1_qvlew"]
+[ext_resource type="LabelSettings" uid="uid://b7s73no7jxd8n" path="res://settings/label_damage.tres" id="2_qvlew"]
+
+[node name="DamageIndicator" type="Control" unique_id=166632238 node_paths=PackedStringArray("texture", "label")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qvlew")
+texture = NodePath("Icon")
+label = NodePath("Icon/Label")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=774553846]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.5
+offset_top = -62.0
+offset_right = 61.5
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_5mweu")
+
+[node name="Label" type="Label" parent="Icon" unique_id=2016034062]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-5"
+label_settings = ExtResource("2_qvlew")
+horizontal_alignment = 1
+vertical_alignment = 1
