@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://oyrhq6k11oes" path="res://ui/fighting_bg.png" id="1_fj7g7"]
 [ext_resource type="Texture2D" uid="uid://b3jeepxdvmg7x" path="res://ui/icons/attack.png" id="4_hp4i3"]
 [ext_resource type="Script" uid="uid://ds68xyq01tdr8" path="res://scripts/fighting_team_manager.gd" id="4_xs0qa"]
-[ext_resource type="LabelSettings" uid="uid://b7s73no7jxd8n" path="res://settings/label_damage.tres" id="5_xs0qa"]
+[ext_resource type="LabelSettings" uid="uid://wcpshwhrddg" path="res://settings/label_indicator.tres" id="5_mkx68"]
 [ext_resource type="Script" uid="uid://dn5no20c3u7ur" path="res://scripts/speed_slider.gd" id="6_4qica"]
 [ext_resource type="Texture2D" uid="uid://dog0qvan1fgc6" path="res://ui/signs/lose_sign.png" id="8_hm46v"]
 [ext_resource type="Texture2D" uid="uid://dl8nkl6u6gejv" path="res://ui/signs/win_sign.png" id="9_hlq7a"]
@@ -101,7 +101,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "-5"
-label_settings = ExtResource("5_xs0qa")
+label_settings = ExtResource("5_mkx68")
 horizontal_alignment = 1
 vertical_alignment = 1
 

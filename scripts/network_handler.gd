@@ -9,7 +9,7 @@ var is_server := false
 var timer := ROUND_TIME
 var timer_running := false
 var player_id := str(randi())
-
+var rng := RandomNumberGenerator.new()
 
 func _process(delta):
 	if multiplayer.multiplayer_peer == null:
@@ -52,10 +52,15 @@ func switch_scene_to_shop():
 	await transitionner.transition("res://scene/shop.tscn")
 	timer_running = true
 
+@rpc("any_peer", "reliable", "call_local")
+func send_seed(newSeed : int):
+	rng.seed = newSeed
+
 func _on_client_connected(peer_id : int) -> void:
 	print("Client " + str(peer_id) + " joined")
 	await get_tree().process_frame
 	switch_scene_to_shop.rpc()
+	send_seed.rpc_id(peer_id, rng.seed)
 
 @rpc("authority", "reliable")
 func sync_timer(t: float):

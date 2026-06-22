@@ -7,7 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="5_sepwh"]
 [ext_resource type="Texture2D" uid="uid://b0cl7leo2j54" path="res://ui/buttons/splitted/tile002.png" id="6_14wem"]
 [ext_resource type="Texture2D" uid="uid://bcvaw2dnesobg" path="res://ui/buttons/splitted/tile007.png" id="7_2atga"]
-[ext_resource type="LabelSettings" uid="uid://b7s73no7jxd8n" path="res://settings/label_damage.tres" id="8_by01r"]
+[ext_resource type="LabelSettings" uid="uid://wcpshwhrddg" path="res://settings/label_indicator.tres" id="8_by01r"]
 
 [node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("waitingIndicator", "waitingIndicatorLabel", "buttonContainer")]
 layout_mode = 3

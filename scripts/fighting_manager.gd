@@ -32,14 +32,18 @@ func updateAnimationSpeed(newValue : float):
 	for animal in getAllAnimals():
 		animal.render.animator.speed_scale = animationSpeed
 
+func test(x):
+	print(x)
 
-func mutualAttack():
-	hostTeam.front().attack(otherTeam.front())
-	otherTeam.front().attack(hostTeam.front())
-	await AsyncUtils.await_all([
-		hostTeam.front().endOfAttack,
-		otherTeam.front().endOfAttack,
-	])
+func mutualAttack(first : FightingAnimal, second : FightingAnimal):
+	var counter = Counter.new(2)
+	first.data.call_before_attack(first, counter)
+	second.data.call_before_attack(second, counter)
+	await counter.completed
+	counter = Counter.new(2)
+	first.attack(otherTeam.front(), counter)
+	second.attack(hostTeam.front(), counter)
+	await counter.completed
 
 func _finishedFight() -> void:
 	NetworkHandler.finished_fight()
@@ -50,7 +54,7 @@ func _finishedFight() -> void:
 const postFightAnimationTime = 1.0
 func fight():
 	while not hostTeam.animals.is_empty() and not otherTeam.animals.is_empty():
-		await mutualAttack()
+		await mutualAttack(hostTeam.front(), otherTeam.front())
 	var tween = create_tween()
 	
 	tween.tween_property(mainScreen, "modulate", Color.from_rgba8(50,50,50,255), postFightAnimationTime)
@@ -62,5 +66,4 @@ func fight():
 		winIndicator.scale = Vector2.ZERO
 		winIndicator.visible = true
 		tween.tween_property(winIndicator, "scale", Vector2.ONE, postFightAnimationTime)
-
 	tween.tween_callback(_finishedFight).set_delay(postFightAnimationTime * 2)
