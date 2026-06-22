@@ -6,10 +6,17 @@ class_name AnimalData
 @export var baseHealth: int
 @export var baseAttack: int
 
-var health : int
-var attack : int
-var xp : int = 0
-var lvl : int = 1
+@export var health : int
+@export var attack : int
+@export var xp : int = 0
+@export var lvl : int = 1
+
+
+func serializeState(_dict : Dictionary):
+    pass
+
+func deserializeState(_dict : Dictionary):
+    pass
 
 # Serialize to Dictionary (for network/save)
 func to_dict() -> Dictionary:
@@ -23,17 +30,17 @@ func to_dict() -> Dictionary:
         "lvl": lvl
     }
     
-    # Store texture path instead of the texture itself
     if sprite:
         dict["sprite_path"] = sprite.resource_path
-    
+
+    serializeState(dict)
+
     return dict
 
 # Deserialize from Dictionary
 static func from_dict(dict: Dictionary):
-    animalRegistery.getAnimal(dict.get("name"))
+    var data = animalRegistery.getAnimal(dict.get("name"))
 
-    var data = AnimalData.new()
     data.name = dict.get("name", "Unknown")
     data.baseHealth = dict.get("baseHealth", 10)
     data.baseAttack = dict.get("baseAttack", 5)
@@ -45,18 +52,20 @@ static func from_dict(dict: Dictionary):
     # Load texture if path exists
     if dict.has("sprite_path"):
         data.sprite = load(dict["sprite_path"])
+
+    data.deserializeState(dict)
     
     return data
 
 # Original methods
-func on_attack(target) -> void:
+func on_attack(_target) -> void:
     pass
 
-func on_damage(amount: int) -> void:
+func on_damage(_amount: int) -> void:
     pass
 
 func on_bought() -> void:
     pass
 
-func on_dead(attacker) -> void:
+func on_dead(_attacker) -> void:
     pass

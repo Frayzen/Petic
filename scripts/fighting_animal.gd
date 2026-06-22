@@ -17,7 +17,8 @@ func _ready() -> void:
 
 func setup(team: FightingTeamManager, animalData : AnimalData, isHost : bool):
     teamManager = team
-    data = animalData
+    data = animalData.duplicate(true)
+    print("ANIMAL DATA H " + str(animalData.health) + " AND DAT " + str(data.health))
     if not isHost:
         render.orientation.scale.x = 1
     render.setData(data)
