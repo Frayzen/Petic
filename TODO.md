@@ -1,0 +1,4 @@
+- Tooltip abilities
+- Food & perks
+- Tooltip abilities
+- Death

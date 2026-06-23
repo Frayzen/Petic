@@ -7,7 +7,6 @@
 [ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="5_sepwh"]
 [ext_resource type="Texture2D" uid="uid://b0cl7leo2j54" path="res://ui/buttons/splitted/tile002.png" id="6_14wem"]
 [ext_resource type="Texture2D" uid="uid://bcvaw2dnesobg" path="res://ui/buttons/splitted/tile007.png" id="7_2atga"]
-[ext_resource type="LabelSettings" uid="uid://wcpshwhrddg" path="res://settings/label_indicator.tres" id="8_by01r"]
 
 [node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("waitingIndicator", "waitingIndicatorLabel", "buttonContainer")]
 layout_mode = 3
@@ -89,7 +88,6 @@ text = "Client"
 label_settings = ExtResource("5_sepwh")
 
 [node name="WaitingIndicator" type="TextureButton" parent="." unique_id=842889524]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -146,7 +144,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Cancel"
-label_settings = ExtResource("8_by01r")
+label_settings = ExtResource("5_sepwh")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -27,6 +27,18 @@ func _ready() -> void:
 	await transitionner.complete
 	fight()
 
+func isHostWin():
+	return otherTeam.animals.is_empty() and not hostTeam.animals.is_empty()
+
+func isOtherWin():
+	return not otherTeam.animals.is_empty() and hostTeam.animals.is_empty()
+
+func isDraw():
+	return otherTeam.animals.is_empty() and hostTeam.animals.is_empty()
+
+func isFinished():
+	return hostTeam.animals.is_empty() or otherTeam.animals.is_empty()
+
 func updateAnimationSpeed(newValue : float):
 	animationSpeed = newValue
 	for animal in getAllAnimals():
@@ -53,17 +65,17 @@ func _finishedFight() -> void:
 
 const postFightAnimationTime = 1.0
 func fight():
-	while not hostTeam.animals.is_empty() and not otherTeam.animals.is_empty():
+	while not isFinished():
 		await mutualAttack(hostTeam.front(), otherTeam.front())
 	var tween = create_tween()
 	
 	tween.tween_property(mainScreen, "modulate", Color.from_rgba8(50,50,50,255), postFightAnimationTime)
-	if hostTeam.animals.is_empty():
-		loseIndicator.scale = Vector2.ZERO
-		loseIndicator.visible = true
-		tween.tween_property(loseIndicator, "scale", Vector2.ONE, postFightAnimationTime)
-	else:
-		winIndicator.scale = Vector2.ZERO
-		winIndicator.visible = true
-		tween.tween_property(winIndicator, "scale", Vector2.ONE, postFightAnimationTime)
+	var indicator = drawIndicator
+	if isHostWin():
+		indicator = winIndicator
+	elif isOtherWin():
+		indicator = loseIndicator
+	indicator.scale = Vector2.ZERO
+	indicator.visible = true
+	tween.tween_property(indicator, "scale", Vector2.ONE, postFightAnimationTime)
 	tween.tween_callback(_finishedFight).set_delay(postFightAnimationTime * 2)

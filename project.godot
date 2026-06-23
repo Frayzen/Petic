@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 animalRegistery="*uid://dp3lau3meji44"
-NetworkHandler="*uid://bh7jugqmv5niq"
-transitionner="*uid://c7ie1sauxt1u7"
+NetworkHandler="*uid://b5uaoqi8jvli7"
+transitionner="*uid://brmyasnt6vgu6"
 
 [display]
 

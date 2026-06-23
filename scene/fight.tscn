@@ -2,14 +2,29 @@
 
 [ext_resource type="Script" uid="uid://by7p3ls1jns0j" path="res://scripts/fighting_manager.gd" id="1_1hhop"]
 [ext_resource type="Texture2D" uid="uid://oyrhq6k11oes" path="res://ui/fighting_bg.png" id="1_fj7g7"]
-[ext_resource type="Texture2D" uid="uid://b3jeepxdvmg7x" path="res://ui/icons/attack.png" id="4_hp4i3"]
 [ext_resource type="Script" uid="uid://ds68xyq01tdr8" path="res://scripts/fighting_team_manager.gd" id="4_xs0qa"]
-[ext_resource type="LabelSettings" uid="uid://wcpshwhrddg" path="res://settings/label_indicator.tres" id="5_mkx68"]
 [ext_resource type="Script" uid="uid://dn5no20c3u7ur" path="res://scripts/speed_slider.gd" id="6_4qica"]
+[ext_resource type="Texture2D" uid="uid://c6bpw7mwl50e4" path="res://ui/slider/slider_icon.png" id="6_hm46v"]
+[ext_resource type="Texture2D" uid="uid://by2jmkmg01aqi" path="res://ui/slider/slider_background_filled.png" id="6_m22ft"]
+[ext_resource type="Texture2D" uid="uid://bc061uujh6wmk" path="res://ui/slider/slider_background.png" id="7_m22ft"]
 [ext_resource type="Texture2D" uid="uid://dog0qvan1fgc6" path="res://ui/signs/lose_sign.png" id="8_hm46v"]
 [ext_resource type="Texture2D" uid="uid://dl8nkl6u6gejv" path="res://ui/signs/win_sign.png" id="9_hlq7a"]
 [ext_resource type="Texture2D" uid="uid://bj7vmacyin4r1" path="res://ui/signs/draw_sign.png" id="9_hm46v"]
 [ext_resource type="Texture2D" uid="uid://cwon20i0nvhse" path="res://ui/signs/waiting_for_opponent.png" id="9_mkx68"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkx68"]
+content_margin_top = 50.0
+content_margin_bottom = 50.0
+texture = ExtResource("7_m22ft")
+texture_margin_left = 50.0
+texture_margin_right = 50.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hm46v"]
+content_margin_top = 50.0
+content_margin_bottom = 50.0
+texture = ExtResource("6_m22ft")
+texture_margin_left = 50.0
+texture_margin_right = 50.0
 
 [node name="Fight" type="Control" unique_id=1799241028 node_paths=PackedStringArray("hostTeam", "otherTeam", "mainScreen", "winIndicator", "loseIndicator", "drawIndicator", "waitingIndicator")]
 clip_contents = true
@@ -37,8 +52,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_fj7g7")
-expand_mode = 4
-stretch_mode = 5
+expand_mode = 3
+stretch_mode = 6
 
 [node name="OtherTeam" type="HBoxContainer" parent="MainScreen" unique_id=62669626 node_paths=PackedStringArray("opponentTeam")]
 custom_minimum_size = Vector2(0, 100)
@@ -77,49 +92,29 @@ script = ExtResource("4_xs0qa")
 isHost = true
 opponentTeam = NodePath("../OtherTeam")
 
-[node name="DamageHost" type="TextureRect" parent="MainScreen" unique_id=509779006]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -151.0
-offset_top = -77.0
-offset_right = -28.0
-offset_bottom = 47.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_hp4i3")
-
-[node name="Label" type="Label" parent="MainScreen/DamageHost" unique_id=1306068355]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "-5"
-label_settings = ExtResource("5_mkx68")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SpeedSlider" type="HSlider" parent="MainScreen" unique_id=273752586]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -212.0
-offset_top = 278.0
-offset_right = 214.0
-offset_bottom = 294.0
+offset_left = -636.0
+offset_top = 24.999994
+offset_right = 636.0
+offset_bottom = 158.0
 grow_horizontal = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_icons/grabber = ExtResource("6_hm46v")
+theme_override_icons/grabber_highlight = ExtResource("6_hm46v")
+theme_override_icons/grabber_disabled = ExtResource("6_hm46v")
+theme_override_styles/slider = SubResource("StyleBoxTexture_mkx68")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_hm46v")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_hm46v")
 min_value = 0.1
 max_value = 3.0
-value = 1.1
-scrollable = false
-tick_count = 20
+step = 0.1
+value = 1.0
+ticks_position = 3
 script = ExtResource("6_4qica")
 
 [node name="WaitingIndicator" type="TextureRect" parent="." unique_id=770846398]

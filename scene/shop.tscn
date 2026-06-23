@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://bhiuv18v2smdu" path="res://scripts/coin_label.gd" id="8_tartn"]
 [ext_resource type="Script" uid="uid://k4478ff1y5sq" path="res://scripts/reload_button.gd" id="11_mskdj"]
 [ext_resource type="Texture2D" uid="uid://b0eafvr1kamx4" path="res://ui/icons/refresh_icon.png" id="11_s07y5"]
+[ext_resource type="Script" uid="uid://c2x2ad38saww5" path="res://scripts/hp.gd" id="13_ayspg"]
+[ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="13_oh3n3"]
 
 [node name="Shop" type="Control" unique_id=1744200851 node_paths=PackedStringArray("coin_label", "shop_holder", "team_holder")]
 clip_contents = true
@@ -190,5 +192,40 @@ layout_mode = 2
 texture_normal = ExtResource("11_s07y5")
 stretch_mode = 0
 script = ExtResource("11_mskdj")
+
+[node name="HPs" type="HBoxContainer" parent="." unique_id=419764479]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -138.0
+offset_top = 99.0
+offset_right = -12.0
+offset_bottom = 157.0
+grow_horizontal = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="HPs" unique_id=1192030166]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("4_0wha2")
+theme_override_font_sizes/font_size = 50
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_ayspg")
+
+[node name="TextureRect" type="TextureRect" parent="HPs" unique_id=1494779074]
+custom_minimum_size = Vector2(50, 50)
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_oh3n3")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="pressed" from="Shop/RefreshButton" to="Shop/RefreshButton" method="_on_pressed"]
