@@ -6,9 +6,17 @@
 [ext_resource type="FontFile" uid="uid://xasfapmisv4a" path="res://ui/fonts/LilitaOne-Regular.ttf" id="3_sepwh"]
 [ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="5_sepwh"]
 [ext_resource type="Texture2D" uid="uid://b0cl7leo2j54" path="res://ui/buttons/splitted/tile002.png" id="6_14wem"]
+[ext_resource type="Texture2D" uid="uid://b8k6toqy5rc7h" path="res://ui/buttons/text_input.png" id="6_by01r"]
 [ext_resource type="Texture2D" uid="uid://bcvaw2dnesobg" path="res://ui/buttons/splitted/tile007.png" id="7_2atga"]
 
-[node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("waitingIndicator", "waitingIndicatorLabel", "buttonContainer")]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2atga"]
+texture = ExtResource("6_by01r")
+texture_margin_left = 30.0
+texture_margin_top = 30.0
+texture_margin_right = 30.0
+texture_margin_bottom = 30.0
+
+[node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("ipAddressInput", "ipAddressInfo", "waitingIndicator", "waitingIndicatorLabel", "buttonContainer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -16,6 +24,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0iwki")
+ipAddressInput = NodePath("VBoxContainer/AddressControl/IPAddressInput")
+ipAddressInfo = NodePath("VBoxContainer/IPInfo")
 waitingIndicator = NodePath("WaitingIndicator")
 waitingIndicatorLabel = NodePath("WaitingIndicator/Label")
 buttonContainer = NodePath("VBoxContainer")
@@ -38,6 +48,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
+
+[node name="IPInfo" type="Label" parent="VBoxContainer" unique_id=588941054]
+layout_mode = 2
+text = "Your IP :"
+label_settings = ExtResource("5_sepwh")
+horizontal_alignment = 1
 
 [node name="Server" type="TextureButton" parent="VBoxContainer" unique_id=319228869]
 layout_mode = 2
@@ -87,7 +103,33 @@ theme_override_font_sizes/font_size = 70
 text = "Client"
 label_settings = ExtResource("5_sepwh")
 
+[node name="AddressControl" type="Control" parent="VBoxContainer" unique_id=1713448321]
+custom_minimum_size = Vector2(0, 100)
+custom_maximum_size = Vector2(-1, 100)
+layout_mode = 2
+
+[node name="IPAddressInput" type="LineEdit" parent="VBoxContainer/AddressControl" unique_id=1163088941]
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 326.0
+offset_top = -43.0
+offset_right = -326.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_2atga")
+text = "192.168.1.1"
+placeholder_text = "IP Address"
+
 [node name="WaitingIndicator" type="TextureButton" parent="." unique_id=842889524]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

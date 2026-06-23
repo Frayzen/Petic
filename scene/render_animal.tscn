@@ -293,6 +293,7 @@ offset_transform_enabled = true
 texture = ExtResource("1_syqby")
 expand_mode = 5
 stretch_mode = 5
+flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Orientation/AnimalSprite" unique_id=581080106]
 libraries/ = SubResource("AnimationLibrary_cjc7v")

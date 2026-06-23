@@ -5,10 +5,12 @@ var rng = RandomNumberGenerator.new()
 var animals: Array[AnimalData] = []
 
 func _init() -> void:
+	print("ANIMAL REGISTRY INIT")
 	var dir = DirAccess.open("res://animals")
 	for file in dir.get_files():
-		if file.ends_with(".tres"):
-			animals.append(load("res://animals/" + file))
+		var clean_file = file.trim_suffix(".remap")
+		print("GET FILE " + clean_file)
+		animals.append(load("res://animals/" + clean_file))
 	for animal in animals:
 		print(animal.name + " has " + str(animal.baseHealth) + " health")
 

@@ -1,9 +1,8 @@
 extends Node
 
 const PORT = 24567
-const ADDRESS = "127.0.0.1"
 const MAX_CLIENTS = 1
-const ROUND_TIME := 3.0
+const ROUND_TIME := 1000.0
 
 var is_server := false
 var timer := ROUND_TIME
@@ -31,9 +30,9 @@ func _on_disconnect():
     cancelConnection()
     transitionner.transition("res://scene/main_menu.tscn")
 
-func start_client():
+func start_client(address : String):
     var peer = ENetMultiplayerPeer.new()
-    peer.create_client(ADDRESS, PORT)
+    peer.create_client(address, PORT)
 
     multiplayer.multiplayer_peer = peer
     is_server = false

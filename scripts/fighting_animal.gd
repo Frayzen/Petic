@@ -18,7 +18,7 @@ func setup(team: FightingTeamManager, animalData : AnimalData, isHost : bool):
     data = animalData.duplicate(true)
     data.animal = self
     if not isHost:
-        render.orientation.scale.x = 1
+        render.orientation.scale.x = -1
     render.setData(data)
 
 func attack(target : FightingAnimal, counter : Counter):
