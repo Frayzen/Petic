@@ -21,13 +21,11 @@ func setup(team: FightingTeamManager, animalData : AnimalData, isHost : bool):
         render.orientation.scale.x = -1
     render.setData(data)
 
-func attack(target : FightingAnimal, counter : Counter):
+func attack(target : FightingAnimal):
     render.animator.queue("attack")
     await delaySec(render.animator.get_animation("attack").get_marker_time("mid_attack") / render.animator.speed_scale)
     target.damaged(data.attack)
     await render.animator.animation_finished
-    await checkDeath()
-    counter.submit()
 
 func delaySec(duration : float):
     await get_tree().create_timer(duration).timeout
@@ -69,13 +67,10 @@ func checkDeath():
         render.animator.queue("death")
         await render.animator.animation_finished
         modulate.a = 0
-        await die()
-
-func die():
-    await teamManager.remove(self)
-    var invAnimSpeed = (1 / FightingManager.instance.animationSpeed)
-    var duration = 0.4 * invAnimSpeed
-    var tween = create_tween()
-    tween.tween_property(self, "custom_maximum_size:x", 0.0, duration)
-    await tween.finished
-    queue_free()
+        teamManager.remove(self)
+        var invAnimSpeed = (1 / FightingManager.instance.animationSpeed)
+        var duration = 0.4 * invAnimSpeed
+        var tween = create_tween()
+        tween.tween_property(self, "custom_maximum_size:x", 0.0, duration)
+        await tween.finished
+        queue_free()

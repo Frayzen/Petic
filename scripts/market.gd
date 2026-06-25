@@ -35,7 +35,7 @@ func _ready() -> void:
         for i in range(animalDatas.size()):
             if animalDatas[i] != null:
                 team_animals[i].update(animalDatas[i])
-    buy(team_animals[0], shop_animals[0])
+    # buy(team_animals[0], shop_animals[0])
 
 func buy(team_animal: TeamAnimal, shop_animal : ShopAnimal) -> bool:
     if coins < 3:

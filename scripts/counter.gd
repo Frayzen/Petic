@@ -14,6 +14,6 @@ func submit():
     _counter = _counter + 1
     if _counter >= _total:
         var tree = Engine.get_main_loop()
-        await tree.create_timer(0.01).timeout
+        await tree.create_timer(0.1).timeout
         completed.emit()
         _counter = 0

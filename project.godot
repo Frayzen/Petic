@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="Petic"
-run/main_scene="uid://c2klcsuxpstv4"
+run/main_scene="uid://detgrp7eoob5"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+tube_client="*uid://cy006uvidc4y"
 animalRegistery="*uid://dp3lau3meji44"
 NetworkHandler="*uid://b5uaoqi8jvli7"
 transitionner="*uid://brmyasnt6vgu6"
@@ -28,7 +29,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/animalmanifestgenerator/plugin.cfg")
+enabled=PackedStringArray("res://addons/animalmanifestgenerator/plugin.cfg", "res://addons/tube/plugin.cfg")
 
 [physics]
 

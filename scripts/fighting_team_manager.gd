@@ -8,8 +8,7 @@ var fightAnimal = preload("res://scene/fighting_animal.tscn")
 var animals : Array[FightingAnimal] = []
 
 func _ready() -> void:
-	var animalDatas : Array[AnimalData] = NetworkHandler.hostTeam if isHost else NetworkHandler.otherTeam
-	animalDatas.reverse()
+	var animalDatas = NetworkHandler.hostTeam if isHost else NetworkHandler.otherTeam
 	for animalData in animalDatas:
 		summon(animalData)
 
@@ -24,6 +23,13 @@ func summon(animalData : AnimalData):
 	fightingAnimal.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	animals.append(fightingAnimal)
 	add_child(fightingAnimal)
+	if isHost:
+		move_child(fightingAnimal, 0)
+
+func checkDeath(counter : Counter):
+	for animal in animals:
+		await animal.checkDeath()
+	counter.submit()
 
 func remove(animal : FightingAnimal):
 	animals.erase(animal)

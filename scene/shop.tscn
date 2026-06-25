@@ -10,8 +10,10 @@
 [ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="7_08gde"]
 [ext_resource type="Texture2D" uid="uid://227ufwadl078" path="res://ui/icons/coin.png" id="7_pd0vs"]
 [ext_resource type="Script" uid="uid://bhiuv18v2smdu" path="res://scripts/coin_label.gd" id="8_tartn"]
+[ext_resource type="Texture2D" uid="uid://crbthjke17tro" path="res://ui/icons/sell.png" id="11_dojno"]
 [ext_resource type="Script" uid="uid://k4478ff1y5sq" path="res://scripts/reload_button.gd" id="11_mskdj"]
 [ext_resource type="Texture2D" uid="uid://b0eafvr1kamx4" path="res://ui/icons/refresh_icon.png" id="11_s07y5"]
+[ext_resource type="Script" uid="uid://ce3u2et21ikvl" path="res://scripts/sell.gd" id="12_guf26"]
 [ext_resource type="Script" uid="uid://c2x2ad38saww5" path="res://scripts/hp.gd" id="13_ayspg"]
 [ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="13_oh3n3"]
 
@@ -166,10 +168,33 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = -174.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+layout_direction = 2
 theme_override_constants/separation = 50
 alignment = 1
+
+[node name="SellButton" type="TextureButton" parent="TeamBg" unique_id=1108495954]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -50.0
+offset_right = -42.0
+offset_bottom = 50.0
+grow_horizontal = 0
+grow_vertical = 2
+texture_normal = ExtResource("11_dojno")
+stretch_mode = 0
+script = ExtResource("12_guf26")
 
 [node name="Shop" type="HBoxContainer" parent="." unique_id=1423777634]
 layout_mode = 1
@@ -228,4 +253,5 @@ texture = ExtResource("13_oh3n3")
 expand_mode = 1
 stretch_mode = 5
 
+[connection signal="pressed" from="TeamBg/SellButton" to="TeamBg/SellButton" method="_on_pressed"]
 [connection signal="pressed" from="Shop/RefreshButton" to="Shop/RefreshButton" method="_on_pressed"]
