@@ -38,18 +38,29 @@ func _apply(event : FightEvent, counter : Counter):
 func _sortByHealth(cur : FightingAnimal, other : FightingAnimal):
 	return cur.data.health < other.data.health
 
-func addEventForAll(hostTeam : Array[FightingAnimal], otherTeam : Array[FightingAnimal], type : FightEvent.Type):
+func buildEventForAll(builder : Callable, hostTeam : Array[FightingAnimal] = manager.hostTeam.animals, otherTeam : Array[FightingAnimal] = manager.otherTeam.animals):
 	var maxlen = max(hostTeam.size(), otherTeam.size())
 	for i in range(maxlen - 1, -1, -1):
-		if i < otherTeam.size() and i < hostTeam.size():
-			addMutual(hostTeam[i], otherTeam[i], type)
-		elif i < otherTeam.size():
-			otherEvents.push_front(FightEvent.new(type, otherTeam[i]))
-		else:
-			hostEvents.push_front(FightEvent.new(type, hostTeam[i]))
+		if i < otherTeam.size():
+			var event = builder.call(otherTeam[i])
+			otherEvents.push_front(event)
+		if i < hostTeam.size():
+			var event = builder.call(hostTeam[i])
+			hostEvents.push_front(event)
+		if i < hostTeam.size() and i < otherTeam.size():
+			makeDependent()
+
+func addEventForAll(type : FightEvent.Type, hostTeam : Array[FightingAnimal] = manager.hostTeam.animals, otherTeam : Array[FightingAnimal] = manager.otherTeam.animals):
+	buildEventForAll(func(animal): return FightEvent.new(type, animal), hostTeam, otherTeam)
+
+func getFirstValidEvent(events : Array[FightEvent]):
+	for e in events:
+		if e.animal != null:
+			return e
+	return null
 
 func process():
-	addEventForAll(manager.hostTeam.animals, manager.otherTeam.animals, FightEvent.Type.BEFORE_FIGHT)
+	addEventForAll(FightEvent.Type.BEFORE_FIGHT)
 	var tree = manager.get_tree()
 	if NetworkHandler.is_server and debug:
 		await tree.create_timer(7).timeout
@@ -58,22 +69,18 @@ func process():
 		if pause:
 			await unpause
 
-		var hostDeads = manager.hostTeam.getDeadAnimals()
-		var otherDeads = manager.otherTeam.getDeadAnimals()
-		addEventForAll(hostDeads, otherDeads, FightEvent.Type.DIE)
-		addEventForAll(hostDeads, otherDeads, FightEvent.Type.BEFORE_DIE)
-
 		var emptyQueues : bool = hostEvents.is_empty() and otherEvents.is_empty()
-
+		if emptyQueues:
+			manager.processDeaths()
+			emptyQueues = hostEvents.is_empty() and otherEvents.is_empty()
 		if manager.isFinished() and emptyQueues:
 			return
-
 		if emptyQueues:
-			addMutualFront(FightEvent.Type.ATTACK)
-			addMutualFront(FightEvent.Type.BEFORE_ATTACK)
+			pushBackMutualFront(FightEvent.Type.BEFORE_ATTACK)
+			pushBackMutualFront(FightEvent.Type.ATTACK)
 		var processing : Array[FightEvent] = []
-		var otherEvent = otherEvents.front() if not otherEvents.is_empty() else null
-		var hostEvent = hostEvents.front() if not hostEvents.is_empty() else null
+		var otherEvent = getFirstValidEvent(otherEvents)
+		var hostEvent = getFirstValidEvent(hostEvents)
 
 		if NetworkHandler.is_server and debug:
 			await tree.create_timer(1).timeout
@@ -99,15 +106,12 @@ func process():
 			_apply(event, counter)
 		await counter.completed
 
-func addMutualFront(type : FightEvent.Type):
-	addMutual(manager.hostTeam.front(), manager.otherTeam.front(), type)
+func pushBackMutualFront(type : FightEvent.Type):
+	var hostEvent = FightEvent.new(type, manager.hostTeam.front()).setTarget(manager.otherTeam.front())
+	var otherEvent = FightEvent.new(type, manager.otherTeam.front()).setTarget(manager.hostTeam.front())
+	hostEvents.push_back(hostEvent)
+	otherEvents.push_back(otherEvent)
 
-func addMutual(hostAnimal : FightingAnimal, otherAnimal : FightingAnimal, type : FightEvent.Type):
-	var hostEvent = FightEvent.new(type, hostAnimal).setTarget(otherAnimal)
-	var otherEvent = FightEvent.new(type, otherAnimal).setTarget(hostAnimal)
-
-	otherEvent.setDepend(hostEvent)
-	hostEvent.setDepend(otherEvent)
-
-	hostEvents.push_front(hostEvent)
-	otherEvents.push_front(otherEvent)
+func makeDependent():
+	otherEvents[0].setDepend(hostEvents[0])
+	hostEvents[0].setDepend(otherEvents[0])

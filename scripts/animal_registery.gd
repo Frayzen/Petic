@@ -5,23 +5,19 @@ var rng = RandomNumberGenerator.new()
 var animals: Array[AnimalData] = []
 
 func _init() -> void:
-	print("ANIMAL REGISTRY INIT")
-	var dir = DirAccess.open("res://animals")
-	for file in dir.get_files():
-		var clean_file = file.trim_suffix(".remap")
-		print("GET FILE " + clean_file)
-		animals.append(load("res://animals/" + clean_file))
-	for animal in animals:
-		print(animal.name + " has " + str(animal.baseHealth) + " health")
+    var dir = DirAccess.open("res://animals")
+    for file in dir.get_files():
+        var clean_file = file.trim_suffix(".remap")
+        animals.append(load("res://animals/" + clean_file))
 
 func pickRandom() -> AnimalData:
-	var generated = animals[randi_range(0, animals.size() - 1)].duplicate()
-	generated.health = generated.baseHealth
-	generated.attack = generated.baseAttack
-	return generated
+    var generated = animals[randi_range(0, animals.size() - 1)].duplicate()
+    generated.health = generated.baseHealth
+    generated.attack = generated.baseAttack
+    return generated
 
 func getAnimal(nameAnimal : String) -> AnimalData:
-	for animal in animals:
-		if animal.name == nameAnimal:
-			return animal.duplicate()
-	return null
+    for animal in animals:
+        if animal.name == nameAnimal:
+            return animal.duplicate()
+    return null

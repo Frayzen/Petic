@@ -8,12 +8,6 @@ extends Control
 func _ready() -> void:
     waitingIndicator.visible = false
     menuContainer.visible = true
-    var ipStr = ""
-    for ip in IP.get_local_addresses():
-        if ip.begins_with("192.168.") or ip.begins_with("10.") or ip.begins_with("172.16."):
-            ipStr = ip + " "
-            print(ipStr)
-        
 
 func _on_client_pressed() -> void:
     NetworkHandler.start_client(sessionInput.text)

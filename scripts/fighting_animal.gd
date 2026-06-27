@@ -42,7 +42,7 @@ func glow(color : Color):
 	await delay(0.25)
 	render.modulate = Color.from_rgba8(255, 255, 255, 255)
 
-func damage(amount : int, source : FightingAnimal):
+func damage(amount : int, source : FightingAnimal = null):
 	var damageEvent = FightEvent.new(FightEvent.Type.DAMAGED, self).setAmount(amount)
 	addEvent(damageEvent)
 	addEvent(FightEvent.new(FightEvent.Type.BEFORE_DAMAGED, self).setAmount(amount).setParameter(damageEvent).setSource(source))
@@ -57,7 +57,7 @@ func applyDamaged(amount : int):
 	spawnIndicator(-amount, damageIndicator, damageSpawner)
 	data.health -= amount
 	render.update()
-	await glow(Color.from_rgba8(255, 100, 100, 255))
+	glow(Color.from_rgba8(255, 100, 100, 255))
 
 func buffHealth(amount : int):
 	spawnIndicator(amount, healthIndicator, healthSpawner)
@@ -71,10 +71,9 @@ func buffAttack(amount : int):
 	render.update()
 	await delay(0.5)
 
-
 func die():
 	render.animator.queue("death")
-	await render.animator.animation_finished
+	await render.endOfAnim()
 	modulate.a = 0
 	teamManager.remove(self)
 	var invAnimSpeed = (1 / FightingManager.instance.animationSpeed)

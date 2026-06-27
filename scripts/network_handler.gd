@@ -48,11 +48,8 @@ func start_client(sessionId : String):
     is_server = false
 
 func start_server():
-    print("OK HERE")
     tube_client.create_session()
     is_server = true
-
-    print("Server started ID " + tube_client.session_id)
 
 @rpc("any_peer", "reliable", "call_local")
 func switch_scene_to_shop(serverHp : int, clientHp : int):
@@ -68,7 +65,6 @@ func send_seed(newSeed : int):
     rng.seed = newSeed
 
 func _on_client_connected(peer_id : int) -> void:
-    print("Client " + str(peer_id) + " joined")
     await get_tree().process_frame
     switch_scene_to_shop.rpc(defaultHp, defaultHp)
     send_seed.rpc_id(peer_id, rng.seed)
@@ -96,7 +92,6 @@ func receive_round_data(json_data: String):
         otherTeam = animals
         transitionner.transition("res://scene/fight.tscn")
     else:
-        print("Failed to parse JSON: ", json.get_error_message())
 
 @rpc("any_peer", "reliable", "call_local")
 func send_round_data():
