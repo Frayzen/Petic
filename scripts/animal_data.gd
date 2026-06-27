@@ -58,14 +58,17 @@ static func from_dict(dict: Dictionary):
     
     return data
 
+func before_fight():
+    pass
+
 func before_attack(_target : FightingAnimal):
     pass
 
-func on_damage(_amount: int, _attacker : FightingAnimal):
-    pass
+func before_damaged(_attacker : FightingAnimal, amount : int ) -> int:
+    return amount
 
 func on_bought() -> void:
     pass
 
-func on_dead(_attacker) -> void:
+func before_die() -> void:
     pass

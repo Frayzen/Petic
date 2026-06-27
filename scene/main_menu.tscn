@@ -142,61 +142,6 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="menu/VBoxContainer" unique_id=867696193]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_dclss")
-expand_mode = 4
-stretch_mode = 5
-
-[node name="Server" type="TextureButton" parent="menu/VBoxContainer" unique_id=319228869]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("2_0iwki")
-
-[node name="Label" type="Label" parent="menu/VBoxContainer/Server" unique_id=1399952022]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -9.5
-offset_right = 23.0
-offset_bottom = 9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_sepwh")
-theme_override_font_sizes/font_size = 70
-text = "Server"
-label_settings = ExtResource("5_sepwh")
-
-[node name="Client" type="TextureButton" parent="menu/VBoxContainer" unique_id=1540545901]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = ExtResource("2_0iwki")
-
-[node name="Label" type="Label" parent="menu/VBoxContainer/Client" unique_id=1879889028]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -23.0
-offset_top = -9.5
-offset_right = 23.0
-offset_bottom = 9.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_sepwh")
-theme_override_font_sizes/font_size = 70
-text = "Client"
-label_settings = ExtResource("5_sepwh")
-
 [node name="SessionControl" type="Control" parent="menu/VBoxContainer" unique_id=1713448321]
 custom_minimum_size = Vector2(0, 100)
 custom_maximum_size = Vector2(-1, 100)
@@ -229,7 +174,55 @@ emoji_menu_enabled = false
 clear_button_enabled = true
 select_all_on_focus = true
 
+[node name="Client" type="TextureButton" parent="menu/VBoxContainer" unique_id=1540545901]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_0iwki")
+
+[node name="Label" type="Label" parent="menu/VBoxContainer/Client" unique_id=1879889028]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -9.5
+offset_right = 23.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 70
+text = "Client"
+label_settings = ExtResource("5_sepwh")
+
+[node name="Server" type="TextureButton" parent="menu/VBoxContainer" unique_id=319228869]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_0iwki")
+
+[node name="Label" type="Label" parent="menu/VBoxContainer/Server" unique_id=1399952022]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -9.5
+offset_right = 23.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 70
+text = "Server"
+label_settings = ExtResource("5_sepwh")
+
 [connection signal="pressed" from="WaitingIndicator/CancelButton" to="." method="_on_cancel_button_pressed"]
-[connection signal="pressed" from="menu/VBoxContainer/Server" to="." method="_on_server_pressed"]
-[connection signal="pressed" from="menu/VBoxContainer/Client" to="." method="_on_client_pressed"]
 [connection signal="text_submitted" from="menu/VBoxContainer/SessionControl/SessionInput" to="." method="_on_ip_address_input_text_submitted"]
+[connection signal="pressed" from="menu/VBoxContainer/Client" to="." method="_on_client_pressed"]
+[connection signal="pressed" from="menu/VBoxContainer/Server" to="." method="_on_server_pressed"]

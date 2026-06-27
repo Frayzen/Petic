@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Rabbit" format=3 uid="uid://c7mrqu0sjagdd"]
+
+[ext_resource type="Script" uid="uid://jdfmp0uexof" path="res://scripts/animals/rabbit.gd" id="1_kofew"]
+[ext_resource type="Texture2D" uid="uid://cw5uwg8phbxwf" path="res://ui/animals/rabbit.png" id="2_jdfq5"]
+
+[resource]
+script = ExtResource("1_kofew")
+sprite = ExtResource("2_jdfq5")
+name = "Rabbit"
+baseHealth = 2
+baseAttack = 2
+metadata/_custom_type_script = "uid://dpctfpr5cqgff"
