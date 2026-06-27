@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://do8wuxlbe70kt"]
 
 [ext_resource type="Script" uid="uid://by7p3ls1jns0j" path="res://scripts/fighting_manager.gd" id="1_1hhop"]
-[ext_resource type="Texture2D" uid="uid://oyrhq6k11oes" path="res://ui/fighting_bg.png" id="1_fj7g7"]
+[ext_resource type="Texture2D" uid="uid://oyrhq6k11oes" path="res://ui/backgrounds/fighting_bg.png" id="1_fj7g7"]
 [ext_resource type="Script" uid="uid://ds68xyq01tdr8" path="res://scripts/fighting_team_manager.gd" id="4_xs0qa"]
 [ext_resource type="Script" uid="uid://dn5no20c3u7ur" path="res://scripts/speed_slider.gd" id="6_4qica"]
 [ext_resource type="Texture2D" uid="uid://c6bpw7mwl50e4" path="res://ui/slider/slider_icon.png" id="6_hm46v"]

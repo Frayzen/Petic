@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bjh2ckjjyutl1"]
+
+[ext_resource type="Script" uid="uid://cjl2sh28pq1vw" path="res://scripts/end_scene.gd" id="1_1hpfm"]
+[ext_resource type="Texture2D" uid="uid://xn0s0eeawar0" path="res://ui/backgrounds/won_bg2.png" id="2_oiw0g"]
+[ext_resource type="Texture2D" uid="uid://uvabxkrdl7jc" path="res://ui/backgrounds/lost_bg2.png" id="3_nfpux"]
+
+[node name="EndGame" type="Control" unique_id=739234136 node_paths=PackedStringArray("bg")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1hpfm")
+bg = NodePath("TextureRect")
+winBg = ExtResource("2_oiw0g")
+lostBg = ExtResource("3_nfpux")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1618486958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_nfpux")
+expand_mode = 3
+stretch_mode = 6

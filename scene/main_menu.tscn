@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://detgrp7eoob5"]
 
 [ext_resource type="Script" uid="uid://dt6gcxl3hx72t" path="res://scripts/main_menu.gd" id="1_0iwki"]
-[ext_resource type="Texture2D" uid="uid://cct3gtqk5gihw" path="res://ui/background.jpeg" id="1_2fwvj"]
+[ext_resource type="Texture2D" uid="uid://cct3gtqk5gihw" path="res://ui/backgrounds/background.jpeg" id="1_2fwvj"]
 [ext_resource type="Texture2D" uid="uid://tivbbbsn3ov6" path="res://ui/buttons/splitted/tile006.png" id="2_0iwki"]
 [ext_resource type="Texture2D" uid="uid://blutic4fqscj2" path="res://ui/logo.png" id="3_dclss"]
 [ext_resource type="FontFile" uid="uid://xasfapmisv4a" path="res://ui/fonts/LilitaOne-Regular.ttf" id="3_sepwh"]
@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://b0cl7leo2j54" path="res://ui/buttons/splitted/tile002.png" id="6_14wem"]
 [ext_resource type="Texture2D" uid="uid://b8k6toqy5rc7h" path="res://ui/buttons/text_input.png" id="6_by01r"]
 [ext_resource type="Texture2D" uid="uid://bcvaw2dnesobg" path="res://ui/buttons/splitted/tile007.png" id="7_2atga"]
+[ext_resource type="Texture2D" uid="uid://dbqvg3e3dunq8" path="res://ui/icons/level.png" id="10_1o50l"]
+[ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="10_hmxu4"]
+[ext_resource type="Script" uid="uid://daol4idqxlqxd" path="res://scripts/integer_input.gd" id="11_cht4j"]
+[ext_resource type="Texture2D" uid="uid://227ufwadl078" path="res://ui/icons/coin.png" id="11_ictww"]
+[ext_resource type="Texture2D" uid="uid://b2wisdc2toe3w" path="res://ui/icons/timer.png" id="14_os2d6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2atga"]
 texture = ExtResource("6_by01r")
@@ -17,7 +22,10 @@ texture_margin_top = 30.0
 texture_margin_right = 30.0
 texture_margin_bottom = 30.0
 
-[node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("sessionInput", "waitingIndicator", "waitingIndicatorLabel", "menuContainer")]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1o50l"]
+texture = ExtResource("10_1o50l")
+
+[node name="MainMenu" type="Control" unique_id=1975930055 node_paths=PackedStringArray("sessionInput", "waitingIndicator", "waitingIndicatorLabel", "menuContainer", "inputHp", "inputCoin", "inputTimer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,6 +37,9 @@ sessionInput = NodePath("menu/VBoxContainer/SessionControl/SessionInput")
 waitingIndicator = NodePath("WaitingIndicator")
 waitingIndicatorLabel = NodePath("WaitingIndicator/Label")
 menuContainer = NodePath("menu")
+inputHp = NodePath("menu/HBoxContainer/AmountHp/HpInput")
+inputCoin = NodePath("menu/HBoxContainer/AmountCoins/CoinInput")
+inputTimer = NodePath("menu/HBoxContainer/AmountTime/TimerInput")
 
 [node name="Background" type="TextureRect" parent="." unique_id=1606818445]
 layout_mode = 1
@@ -112,7 +123,7 @@ grow_vertical = 2
 [node name="Logo" type="Control" parent="menu" unique_id=2104316798]
 layout_mode = 1
 anchor_right = 0.5
-anchor_bottom = 1.0
+anchor_bottom = 0.8
 offset_right = 75.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -135,7 +146,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.8
 offset_left = -50.68805
 grow_horizontal = 2
 grow_vertical = 2
@@ -221,6 +232,158 @@ theme_override_fonts/font = ExtResource("3_sepwh")
 theme_override_font_sizes/font_size = 70
 text = "Server"
 label_settings = ExtResource("5_sepwh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="menu" unique_id=416971214]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="AmountHp" type="Control" parent="menu/HBoxContainer" unique_id=893973858]
+custom_minimum_size = Vector2(200, 100)
+custom_maximum_size = Vector2(200, 100)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HpInput" type="LineEdit" parent="menu/HBoxContainer/AmountHp" unique_id=379690509]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 212.0
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_1o50l")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_1o50l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1o50l")
+text = "3"
+alignment = 1
+max_length = 3
+emoji_menu_enabled = false
+select_all_on_focus = true
+virtual_keyboard_type = 2
+script = ExtResource("11_cht4j")
+
+[node name="HpLogo" type="TextureRect" parent="menu/HBoxContainer/AmountHp" unique_id=528849680]
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("10_hmxu4")
+stretch_mode = 5
+
+[node name="AmountCoins" type="Control" parent="menu/HBoxContainer" unique_id=1591257501]
+custom_minimum_size = Vector2(200, 100)
+custom_maximum_size = Vector2(200, 100)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="CoinInput" type="LineEdit" parent="menu/HBoxContainer/AmountCoins" unique_id=1146432740]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 212.0
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_1o50l")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_1o50l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1o50l")
+text = "10"
+alignment = 1
+max_length = 3
+emoji_menu_enabled = false
+select_all_on_focus = true
+virtual_keyboard_type = 2
+script = ExtResource("11_cht4j")
+
+[node name="CoinLogo" type="TextureRect" parent="menu/HBoxContainer/AmountCoins" unique_id=1121233721]
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_ictww")
+stretch_mode = 5
+
+[node name="AmountTime" type="Control" parent="menu/HBoxContainer" unique_id=1870164523]
+custom_minimum_size = Vector2(200, 100)
+custom_maximum_size = Vector2(200, 100)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TimerInput" type="LineEdit" parent="menu/HBoxContainer/AmountTime" unique_id=792325274]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 212.0
+grow_vertical = 2
+pivot_offset = Vector2(0.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_sepwh")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_1o50l")
+theme_override_styles/read_only = SubResource("StyleBoxTexture_1o50l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_1o50l")
+text = "60"
+alignment = 1
+max_length = 3
+emoji_menu_enabled = false
+select_all_on_focus = true
+virtual_keyboard_type = 2
+script = ExtResource("11_cht4j")
+
+[node name="TimerLogo" type="TextureRect" parent="menu/HBoxContainer/AmountTime" unique_id=1350464776]
+custom_minimum_size = Vector2(80, 80)
+custom_maximum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -79.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_os2d6")
+stretch_mode = 5
 
 [connection signal="pressed" from="WaitingIndicator/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="text_submitted" from="menu/VBoxContainer/SessionControl/SessionInput" to="." method="_on_ip_address_input_text_submitted"]

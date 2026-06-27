@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cct3gtqk5gihw"
-path="res://.godot/imported/background.jpeg-ac58ca988503c3ef0543e4dd3e82ab6f.ctex"
+uid="uid://v85ttssml2ug"
+path="res://.godot/imported/scheduler_and_popup.png-9147e258a882777dff533e60b8d78ac6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/background.jpeg"
-dest_files=["res://.godot/imported/background.jpeg-ac58ca988503c3ef0543e4dd3e82ab6f.ctex"]
+source_file="res://ui/scheduler_and_popup.png"
+dest_files=["res://.godot/imported/scheduler_and_popup.png-9147e258a882777dff533e60b8d78ac6.ctex"]
 
 [params]
 

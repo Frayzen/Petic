@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doilrhr45y481"
-path="res://.godot/imported/food_cropped.png-2f25ab8b737497ab572e3b12718546f0.ctex"
+uid="uid://cct3gtqk5gihw"
+path="res://.godot/imported/background.jpeg-d9571effee926a8cb5d15fd245b27e51.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/food/food_cropped.png"
-dest_files=["res://.godot/imported/food_cropped.png-2f25ab8b737497ab572e3b12718546f0.ctex"]
+source_file="res://ui/backgrounds/background.jpeg"
+dest_files=["res://.godot/imported/background.jpeg-d9571effee926a8cb5d15fd245b27e51.ctex"]
 
 [params]
 

@@ -14,11 +14,12 @@ var shop_animals : Array[ShopAnimal] = []
 
 var shop_animal_scene := preload("res://scene/shop_animal.tscn")
 var team_animal_scene := preload("res://scene/team_animal.tscn")
-var coins := 60
+var coins := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     instance = self
+    coins = NetworkHandler.amountCoins
 
     for i in range(3):
         var shop_animal = shop_animal_scene.instantiate()
