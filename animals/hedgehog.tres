@@ -7,6 +7,7 @@
 script = ExtResource("1_xga32")
 sprite = ExtResource("2_djgop")
 name = "Hedgehog"
+description = "Before dying, deals 2 damages to everyone"
 baseHealth = 2
 baseAttack = 2
 metadata/_custom_type_script = "uid://dpctfpr5cqgff"

@@ -17,6 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+focus_mode = 1
 script = ExtResource("1_3h84c")
 render = NodePath("AnimalRender")
 damageSpawner = NodePath("DamageSpawner")
@@ -69,3 +70,5 @@ offset_top = 119.0
 offset_right = 23.0
 offset_bottom = 119.0
 grow_vertical = 0
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]

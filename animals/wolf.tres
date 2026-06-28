@@ -7,6 +7,7 @@
 script = ExtResource("1_6mo0l")
 sprite = ExtResource("2_subpb")
 name = "Wolf"
+description = "Before attacking, gain 1 health and 1 attack"
 baseHealth = 5
 baseAttack = 4
 metadata/_custom_type_script = "uid://dpctfpr5cqgff"

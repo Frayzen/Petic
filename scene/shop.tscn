@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://1grlc0ficteg" path="res://scripts/market/shop_holder.gd" id="13_4sgfj"]
 [ext_resource type="Script" uid="uid://c2x2ad38saww5" path="res://scripts/market/hp.gd" id="13_ayspg"]
 [ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="13_oh3n3"]
+[ext_resource type="Texture2D" uid="uid://bcyrmav1dcsey" path="res://ui/icons/freeze.png" id="16_tbfqe"]
+[ext_resource type="Script" uid="uid://ct381fj1jpvbk" path="res://scripts/freeze.gd" id="17_uscfg"]
 
 [node name="Shop" type="Control" unique_id=1744200851]
 clip_contents = true
@@ -148,12 +150,14 @@ expand_mode = 2
 stretch_mode = 4
 
 [node name="TeamBg" type="ColorRect" parent="." unique_id=39848306]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = -39.0
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.12156863, 0.12156863, 0.12156863, 0.44313726)
@@ -196,26 +200,55 @@ script = ExtResource("12_guf26")
 
 [node name="Shop" type="HBoxContainer" parent="." unique_id=1423777634]
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -168.0
-offset_right = -47.0
-offset_bottom = -68.0
+offset_left = -427.0
+offset_top = -188.0
+offset_right = 427.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 50
 script = ExtResource("13_4sgfj")
 
-[node name="RefreshButton" type="TextureButton" parent="Shop" unique_id=261448006]
+[node name="RefreshButton" type="TextureButton" parent="." unique_id=261448006]
 custom_minimum_size = Vector2(100, 100)
 custom_maximum_size = Vector2(100, 100)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -143.0
+offset_right = 120.0
+offset_bottom = -43.0
+grow_vertical = 0
+offset_transform_enabled = true
 texture_normal = ExtResource("11_s07y5")
 stretch_mode = 0
 script = ExtResource("11_mskdj")
+
+[node name="FreezeButton" type="TextureButton" parent="." unique_id=396288094]
+custom_minimum_size = Vector2(100, 100)
+custom_maximum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -143.0
+offset_right = -20.0
+offset_bottom = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_transform_enabled = true
+texture_normal = ExtResource("16_tbfqe")
+stretch_mode = 0
+script = ExtResource("17_uscfg")
 
 [node name="HPs" type="HBoxContainer" parent="." unique_id=419764479]
 layout_mode = 1
@@ -253,4 +286,5 @@ expand_mode = 1
 stretch_mode = 5
 
 [connection signal="pressed" from="TeamBg/SellButton" to="TeamBg/SellButton" method="_on_pressed"]
-[connection signal="pressed" from="Shop/RefreshButton" to="Shop/RefreshButton" method="_on_pressed"]
+[connection signal="pressed" from="RefreshButton" to="RefreshButton" method="_on_pressed"]
+[connection signal="pressed" from="FreezeButton" to="FreezeButton" method="_on_pressed"]

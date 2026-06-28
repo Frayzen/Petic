@@ -7,6 +7,7 @@
 script = ExtResource("1_kofew")
 sprite = ExtResource("2_jdfq5")
 name = "Rabbit"
+description = "Before attacking, swaps the health and the attack of its opponent"
 baseHealth = 2
 baseAttack = 2
 metadata/_custom_type_script = "uid://dpctfpr5cqgff"

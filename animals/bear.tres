@@ -7,6 +7,7 @@
 script = ExtResource("1_66xrp")
 sprite = ExtResource("2_kxvyp")
 name = "Bear"
+description = "Before the fight, gain as much helath as it has attack"
 baseHealth = 4
 baseAttack = 5
 metadata/_custom_type_script = "uid://dpctfpr5cqgff"

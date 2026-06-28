@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://by7p3ls1jns0j" path="res://scripts/fight/fighting_manager.gd" id="1_1hhop"]
 [ext_resource type="Texture2D" uid="uid://oyrhq6k11oes" path="res://ui/backgrounds/fighting_bg.png" id="1_fj7g7"]
 [ext_resource type="Script" uid="uid://ds68xyq01tdr8" path="res://scripts/fight/fighting_team_manager.gd" id="4_xs0qa"]
-[ext_resource type="Script" uid="uid://dn5no20c3u7ur" path="res://scripts/speed_slider.gd" id="6_4qica"]
+[ext_resource type="Script" uid="uid://dn5no20c3u7ur" path="res://scripts/fight/speed_slider.gd" id="6_4qica"]
 [ext_resource type="Texture2D" uid="uid://c6bpw7mwl50e4" path="res://ui/slider/slider_icon.png" id="6_hm46v"]
 [ext_resource type="Texture2D" uid="uid://by2jmkmg01aqi" path="res://ui/slider/slider_background_filled.png" id="6_m22ft"]
 [ext_resource type="Texture2D" uid="uid://bc061uujh6wmk" path="res://ui/slider/slider_background.png" id="7_m22ft"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cwon20i0nvhse" path="res://ui/signs/waiting_for_opponent.png" id="9_mkx68"]
 [ext_resource type="Texture2D" uid="uid://sp1bsf3qxq40" path="res://ui/icons/pause.png" id="9_utc63"]
 [ext_resource type="Script" uid="uid://bl7ens3ru5vg3" path="res://scripts/fight/pause_button.gd" id="10_vfg0h"]
+[ext_resource type="PackedScene" uid="uid://djptefsofq4ce" path="res://scene/tooltip.tscn" id="15_yswqp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mkx68"]
 content_margin_top = 50.0
@@ -170,6 +171,7 @@ offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 
 [node name="WonIndicator" type="TextureRect" parent="EndIndicators" unique_id=2009146777]
 visible = false
@@ -206,3 +208,9 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("9_hm46v")
 stretch_mode = 5
+
+[node name="Tooltip" parent="." unique_id=1329190888 instance=ExtResource("15_yswqp")]
+visible = false
+layout_mode = 1
+offset_top = -72.5
+offset_bottom = 72.5

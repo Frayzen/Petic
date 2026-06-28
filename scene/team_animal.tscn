@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6qrl3sfrsltd"]
 
 [ext_resource type="Texture2D" uid="uid://0c1nb30suhhn" path="res://ui/pedestal.png" id="1_5bjpw"]
-[ext_resource type="Script" uid="uid://cphee5awuyry3" path="res://scripts/team_animal.gd" id="1_8ivbl"]
+[ext_resource type="Script" uid="uid://cphee5awuyry3" path="res://scripts/market/team_animal.gd" id="1_8ivbl"]
 [ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="3_atsrv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ivbl"]

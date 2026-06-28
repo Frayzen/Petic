@@ -3,6 +3,7 @@ class_name AnimalData
 
 @export var sprite: Texture2D
 @export var name: String
+@export var description: String
 @export var baseHealth: int
 @export var baseAttack: int
 
@@ -19,7 +20,6 @@ func serializeState(_dict : Dictionary):
 func deserializeState(_dict : Dictionary):
     pass
 
-# Serialize to Dictionary (for network/save)
 func to_dict() -> Dictionary:
     var dict = {
         "name": name,

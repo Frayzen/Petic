@@ -4,6 +4,8 @@ func _can_drop_data(_at_position: Vector2, _data: Variant) -> bool:
     return _data is TeamAnimal 
 
 func sell(animal : TeamAnimal):
+    if Market.selected == animal:
+        Market.selected = null
     animal.update(null)
     Market.coins += 1
 

@@ -7,6 +7,7 @@
 script = ExtResource("1_ro3mj")
 sprite = ExtResource("2_yiq4o")
 name = "Boar"
+description = "Nothing special about it..."
 baseHealth = 3
 baseAttack = 3
 metadata/_custom_type_script = "uid://vpux38fhypy8"

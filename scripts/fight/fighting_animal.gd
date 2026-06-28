@@ -14,71 +14,81 @@ var healthIndicator = preload("res://scene/indicators/health_indicator.tscn")
 var attackIndicator = preload("res://scene/indicators/attack_indicator.tscn")
 
 func setup(team: FightingTeamManager, animalData : AnimalData, isHost : bool):
-	teamManager = team
-	data = animalData.duplicate(true)
-	data.animal = self
-	if not isHost:
-		render.orientation.scale.x = -1
-	render.setData(data)
+    teamManager = team
+    data = animalData.duplicate(true)
+    data.animal = self
+    if not isHost:
+        render.orientation.scale.x = -1
+    render.setData(data)
 
 func attack(target : FightingAnimal):
-	render.animator.queue("attack")
-	await delaySec(render.animator.get_animation("attack").get_marker_time("mid_attack") / render.animator.speed_scale)
-	target.damage(data.attack, self)
+    render.animator.queue("attack")
+    await delaySec(render.animator.get_animation("attack").get_marker_time("mid_attack") / render.animator.speed_scale)
+    target.damage(data.attack, self)
 
 func delaySec(duration : float):
-	await get_tree().create_timer(duration).timeout
+    await get_tree().create_timer(duration).timeout
 
 func delay(coeff : float = 0.1):
-	await delaySec(coeff / FightingManager.instance.animationSpeed)
+    await delaySec(coeff / FightingManager.instance.animationSpeed)
 
 func spawnIndicator(amount : int, scene : PackedScene, spawner : Control):
-	var instance : Indicator = scene.instantiate()
-	instance.amount = amount
-	spawner.add_child(instance)
+    var instance : Indicator = scene.instantiate()
+    instance.amount = amount
+    spawner.add_child(instance)
 
 func glow(color : Color):
-	render.modulate = color
-	await delay(0.25)
-	render.modulate = Color.from_rgba8(255, 255, 255, 255)
+    render.modulate = color
+    await delay(0.25)
+    render.modulate = Color.from_rgba8(255, 255, 255, 255)
 
 func damage(amount : int, source : FightingAnimal = null):
-	var damageEvent = FightEvent.new(FightEvent.Type.DAMAGED, self).setAmount(amount)
-	addEvent(damageEvent)
-	addEvent(FightEvent.new(FightEvent.Type.BEFORE_DAMAGED, self).setAmount(amount).setParameter(damageEvent).setSource(source))
+    var damageEvent = FightEvent.new(FightEvent.Type.DAMAGED, self).setAmount(amount)
+    addEvent(damageEvent)
+    addEvent(FightEvent.new(FightEvent.Type.BEFORE_DAMAGED, self).setAmount(amount).setParameter(damageEvent).setSource(source))
 
 func addEvent(event : FightEvent):
-	if teamManager.isHost:
-		FightingManager.instance.eventManager.hostEvents.push_front(event)
-	else:
-		FightingManager.instance.eventManager.otherEvents.push_front(event)
+    if teamManager.isHost:
+        FightingManager.instance.eventManager.hostEvents.push_front(event)
+    else:
+        FightingManager.instance.eventManager.otherEvents.push_front(event)
 
 func applyDamaged(amount : int):
-	spawnIndicator(-amount, damageIndicator, damageSpawner)
-	data.health -= amount
-	render.update()
-	glow(Color.from_rgba8(255, 100, 100, 255))
+    spawnIndicator(-amount, damageIndicator, damageSpawner)
+    data.health -= amount
+    render.update()
+    glow(Color.from_rgba8(255, 100, 100, 255))
 
 func buffHealth(amount : int):
-	spawnIndicator(amount, healthIndicator, healthSpawner)
-	data.health += amount
-	render.update()
-	await delay(0.5)
+    spawnIndicator(amount, healthIndicator, healthSpawner)
+    data.health += amount
+    render.update()
+    await delay(0.5)
 
 func buffAttack(amount : int):
-	spawnIndicator(amount, attackIndicator, attackSpawner)
-	data.attack += amount
-	render.update()
-	await delay(0.5)
+    spawnIndicator(amount, attackIndicator, attackSpawner)
+    data.attack += amount
+    render.update()
+    await delay(0.5)
 
 func die():
-	render.animator.queue("death")
-	await render.endOfAnim()
-	modulate.a = 0
-	teamManager.remove(self)
-	var invAnimSpeed = (1 / FightingManager.instance.animationSpeed)
-	var duration = 0.4 * invAnimSpeed
-	var tween = create_tween()
-	tween.tween_property(self, "custom_maximum_size:x", 0.0, duration)
-	await tween.finished
-	queue_free()
+    render.animator.queue("death")
+    await render.endOfAnim()
+    modulate.a = 0
+    teamManager.remove(self)
+    var invAnimSpeed = (1 / FightingManager.instance.animationSpeed)
+    var duration = 0.4 * invAnimSpeed
+    var tween = create_tween()
+    tween.tween_property(self, "custom_maximum_size:x", 0.0, duration)
+    await tween.finished
+    queue_free()
+
+
+func _on_focus_entered() -> void:
+    release_focus()
+    if render.tooltip.visible:
+        render.tooltip.visible = false
+        return
+    for a in FightingManager.instance.getAllAnimals():
+        a.render.tooltip.visible = false
+    render.tooltip.visible = true

@@ -8,7 +8,7 @@ var shop_animals : Array[ShopAnimal] = []
 
 var shop_animal_scene := preload("res://scene/shop_animal.tscn")
 var team_animal_scene := preload("res://scene/team_animal.tscn")
-var coins := 0
+var coins := 999
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,6 +25,8 @@ func startShopping():
 	refresh(0)
 
 func buy(team_animal: TeamAnimal, shop_animal : ShopAnimal) -> bool:
+	if shop_animal.data == null:
+		return false
 	if coins < 3:
 		return false
 	if team_animal.data != null:
@@ -43,7 +45,8 @@ func refresh(cost : int = 1) -> bool:
 	if coins < 1:
 		return false
 	for shop_animal in shop_animals:
-		shop_animal.generate()
+		if not shop_animal.frozen:
+			shop_animal.generate()
 	coins -= cost
 	if selected != null and selected is ShopAnimal:
 		selected = null

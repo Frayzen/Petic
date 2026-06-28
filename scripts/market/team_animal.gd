@@ -30,21 +30,28 @@ func swap(other : TeamAnimal):
 	var tmp = data
 	update(other.data)
 	other.update(tmp)
+	if Market.selected == other:
+		Market.selected = self
+	elif Market.selected == self:
+		Market.selected = other
 
 func _on_pressed() -> void:
 	if Market.selected != null:
 		if Market.selected is ShopAnimal:
 			if Market.buy(self, Market.selected):
 				Market.selected = null
+			elif data != null:
+				Market.selected = self
 		elif Market.selected is TeamAnimal:
 			if Market.selected == self:
+				Market.selected = null
 				return
-			if data != null and Market.selected.data.name == data.name:
+			if data != null and Market.selected.data != null and Market.selected.data.name == data.name:
 				merge(Market.selected.data)
 				Market.selected.update(null)
+				Market.selected = null
 			else:
 				swap(Market.selected)
-			Market.selected = null
 		return
 	else:
 		if data != null:
