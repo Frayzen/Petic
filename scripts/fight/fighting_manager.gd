@@ -65,6 +65,7 @@ func _finishedFight() -> void:
 
 const postFightAnimationTime = 1.0
 func fight():
+	await get_tree().create_timer(0.2).timeout
 	await eventManager.process()
 	var tween = create_tween()
 	

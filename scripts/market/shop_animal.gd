@@ -56,5 +56,6 @@ func generate():
 	render.visible = true
 
 func bought():
+	unfreeze()
 	data = null
 	render.visible = false

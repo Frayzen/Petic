@@ -214,3 +214,5 @@ visible = false
 layout_mode = 1
 offset_top = -72.5
 offset_bottom = 72.5
+
+[connection signal="drag_ended" from="MainScreen/SpeedSlider" to="MainScreen/SpeedSlider" method="_on_drag_ended"]
