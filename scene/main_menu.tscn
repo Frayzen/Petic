@@ -274,6 +274,8 @@ emoji_menu_enabled = false
 select_all_on_focus = true
 virtual_keyboard_type = 2
 script = ExtResource("11_cht4j")
+key = "Hp"
+default = "3"
 
 [node name="HpLogo" type="TextureRect" parent="menu/HBoxContainer/AmountHp" unique_id=528849680]
 custom_minimum_size = Vector2(80, 80)
@@ -321,6 +323,8 @@ emoji_menu_enabled = false
 select_all_on_focus = true
 virtual_keyboard_type = 2
 script = ExtResource("11_cht4j")
+key = "Coins"
+default = "10"
 
 [node name="CoinLogo" type="TextureRect" parent="menu/HBoxContainer/AmountCoins" unique_id=1121233721]
 custom_minimum_size = Vector2(80, 80)
@@ -368,6 +372,8 @@ emoji_menu_enabled = false
 select_all_on_focus = true
 virtual_keyboard_type = 2
 script = ExtResource("11_cht4j")
+key = "Timer"
+default = "120"
 
 [node name="TimerLogo" type="TextureRect" parent="menu/HBoxContainer/AmountTime" unique_id=1350464776]
 custom_minimum_size = Vector2(80, 80)

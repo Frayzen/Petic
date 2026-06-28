@@ -25,6 +25,7 @@ tube_client="*uid://cy006uvidc4y"
 animalRegistery="*uid://dp3lau3meji44"
 NetworkHandler="*uid://b5uaoqi8jvli7"
 transitionner="*uid://brmyasnt6vgu6"
+configManager="*uid://b8ipqdl3ii4w1"
 
 [display]
 
