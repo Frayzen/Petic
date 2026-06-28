@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://kd7kb7e0c561"]
 
-[ext_resource type="Script" uid="uid://cbo400cqeeuln" path="res://scripts/animal_render.gd" id="1_8jf8g"]
+[ext_resource type="Script" uid="uid://cbo400cqeeuln" path="res://scripts/utils/animal_render.gd" id="1_8jf8g"]
 [ext_resource type="Texture2D" uid="uid://cgwlfgwkpeo0k" path="res://ui/animals/bear.png" id="1_syqby"]
 [ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="3_j38bx"]
 [ext_resource type="Texture2D" uid="uid://b3jeepxdvmg7x" path="res://ui/icons/attack.png" id="4_8ehad"]

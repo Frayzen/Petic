@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d07ww4qpndext"]
 
-[ext_resource type="Script" uid="uid://j0y6ps4pwhak" path="res://scripts/shop_animal.gd" id="1_eudsg"]
+[ext_resource type="Script" uid="uid://j0y6ps4pwhak" path="res://scripts/market/shop_animal.gd" id="1_eudsg"]
 [ext_resource type="Texture2D" uid="uid://0c1nb30suhhn" path="res://ui/pedestal.png" id="3_3eo0h"]
 [ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="3_uqts0"]
 

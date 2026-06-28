@@ -67,7 +67,7 @@ func switch_scene_to_shop(serverHp : int, clientHp : int, coins : int):
 		await transitionner.transition("res://scene/end_scene.tscn")
 		return
 	timer = roundTime
-	await transitionner.transition("res://scene/shop.tscn")
+	await transitionner.transition("res://scene/shop.tscn", func(): Market.startShopping())
 	timer_running = true
 
 @rpc("any_peer", "reliable", "call_local")
@@ -110,7 +110,7 @@ func receive_round_data(json_data: String):
 func send_round_data():
 	hostTeam.clear()
 	var datas = []
-	for animal in Market.instance.team_animals:
+	for animal in Market.team_animals:
 		if animal.data != null:
 			datas.append(animal.data.to_dict())
 		hostTeam.append(animal.data)

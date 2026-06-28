@@ -1,23 +1,24 @@
 [gd_scene format=3 uid="uid://c2klcsuxpstv4"]
 
 [ext_resource type="Texture2D" uid="uid://cct3gtqk5gihw" path="res://ui/backgrounds/background.jpeg" id="1_0wha2"]
-[ext_resource type="Script" uid="uid://cl0dcdgjdepfl" path="res://scripts/market.gd" id="1_tartn"]
 [ext_resource type="Texture2D" uid="uid://bjmcesu7rqien" path="res://ui/buttons/splitted/tile004.png" id="3_brg4d"]
-[ext_resource type="Script" uid="uid://cq0muytbo3g0x" path="res://scripts/timer.gd" id="3_phbgv"]
+[ext_resource type="Script" uid="uid://cq0muytbo3g0x" path="res://scripts/market/timer.gd" id="3_phbgv"]
 [ext_resource type="FontFile" uid="uid://xasfapmisv4a" path="res://ui/fonts/LilitaOne-Regular.ttf" id="4_0wha2"]
 [ext_resource type="Texture2D" uid="uid://cs6uggj4q3q5y" path="res://ui/buttons/splitted/tile001.png" id="6_prb2b"]
 [ext_resource type="Texture2D" uid="uid://hvmanxa5ov6c" path="res://ui/signs/wooden_sign.png" id="6_tartn"]
 [ext_resource type="LabelSettings" uid="uid://vwa8bhkbhjfl" path="res://settings/label_titles.tres" id="7_08gde"]
 [ext_resource type="Texture2D" uid="uid://227ufwadl078" path="res://ui/icons/coin.png" id="7_pd0vs"]
-[ext_resource type="Script" uid="uid://bhiuv18v2smdu" path="res://scripts/coin_label.gd" id="8_tartn"]
+[ext_resource type="Script" uid="uid://bhiuv18v2smdu" path="res://scripts/market/coin_label.gd" id="8_tartn"]
 [ext_resource type="Texture2D" uid="uid://crbthjke17tro" path="res://ui/icons/sell.png" id="11_dojno"]
-[ext_resource type="Script" uid="uid://k4478ff1y5sq" path="res://scripts/reload_button.gd" id="11_mskdj"]
+[ext_resource type="Script" uid="uid://k4478ff1y5sq" path="res://scripts/market/refresh_button.gd" id="11_mskdj"]
 [ext_resource type="Texture2D" uid="uid://b0eafvr1kamx4" path="res://ui/icons/refresh_icon.png" id="11_s07y5"]
-[ext_resource type="Script" uid="uid://ce3u2et21ikvl" path="res://scripts/sell.gd" id="12_guf26"]
-[ext_resource type="Script" uid="uid://c2x2ad38saww5" path="res://scripts/hp.gd" id="13_ayspg"]
+[ext_resource type="Script" uid="uid://cgxbulnjxb0pv" path="res://scripts/market/team_holder.gd" id="11_tbfqe"]
+[ext_resource type="Script" uid="uid://ce3u2et21ikvl" path="res://scripts/market/sell.gd" id="12_guf26"]
+[ext_resource type="Script" uid="uid://1grlc0ficteg" path="res://scripts/market/shop_holder.gd" id="13_4sgfj"]
+[ext_resource type="Script" uid="uid://c2x2ad38saww5" path="res://scripts/market/hp.gd" id="13_ayspg"]
 [ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="13_oh3n3"]
 
-[node name="Shop" type="Control" unique_id=1744200851 node_paths=PackedStringArray("coin_label", "shop_holder", "team_holder")]
+[node name="Shop" type="Control" unique_id=1744200851]
 clip_contents = true
 layout_mode = 3
 anchors_preset = 15
@@ -26,10 +27,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_tartn")
-coin_label = NodePath("Coins/HBoxContainer/Label")
-shop_holder = NodePath("Shop")
-team_holder = NodePath("TeamBg/Team")
 
 [node name="Background" type="TextureRect" parent="." unique_id=2053510268]
 layout_mode = 1
@@ -176,6 +173,7 @@ grow_vertical = 2
 layout_direction = 2
 theme_override_constants/separation = 50
 alignment = 1
+script = ExtResource("11_tbfqe")
 
 [node name="SellButton" type="TextureButton" parent="TeamBg" unique_id=1108495954]
 custom_minimum_size = Vector2(100, 100)
@@ -209,6 +207,7 @@ offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 50
+script = ExtResource("13_4sgfj")
 
 [node name="RefreshButton" type="TextureButton" parent="Shop" unique_id=261448006]
 custom_minimum_size = Vector2(100, 100)

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cckte0ubn0i0i"]
 
-[ext_resource type="Script" uid="uid://dxb1lknp50o76" path="res://scripts/indicator.gd" id="1_6kqmf"]
+[ext_resource type="Script" uid="uid://dxb1lknp50o76" path="res://scripts/utils/indicator.gd" id="1_6kqmf"]
 [ext_resource type="Texture2D" uid="uid://bp5y2ppjtxyav" path="res://ui/icons/attack_buff.png" id="2_6kqmf"]
 [ext_resource type="LabelSettings" uid="uid://wcpshwhrddg" path="res://settings/label_indicator.tres" id="3_jefuo"]
 

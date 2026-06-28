@@ -6,7 +6,6 @@ extends Control
 
 var amount : int
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     label.text = str(amount)
     if amount >= 0:

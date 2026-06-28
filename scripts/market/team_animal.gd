@@ -17,7 +17,7 @@ func _drop_data(_at_position: Vector2, dropped_data: Variant) -> void:
 	if dropped_data == self:
 		return
 	if dropped_data is ShopAnimal:
-		Market.instance.buy(self, dropped_data)
+		Market.buy(self, dropped_data)
 	if dropped_data is TeamAnimal:
 		if dropped_data.data != null and data != null and dropped_data.data.name == data.name:
 			merge(dropped_data.data)
@@ -34,7 +34,7 @@ func swap(other : TeamAnimal):
 func _on_pressed() -> void:
 	if Market.selected != null:
 		if Market.selected is ShopAnimal:
-			if Market.instance.buy(self, Market.selected):
+			if Market.buy(self, Market.selected):
 				Market.selected = null
 		elif Market.selected is TeamAnimal:
 			if Market.selected == self:

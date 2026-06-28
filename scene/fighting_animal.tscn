@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://svvolxfw8rqd"]
 
-[ext_resource type="Script" uid="uid://b7u5fdwj6ik1" path="res://scripts/fighting_animal.gd" id="1_3h84c"]
+[ext_resource type="Script" uid="uid://b7u5fdwj6ik1" path="res://scripts/fight/fighting_animal.gd" id="1_3h84c"]
 [ext_resource type="PackedScene" uid="uid://kd7kb7e0c561" path="res://scene/render_animal.tscn" id="1_f140u"]
 
 [node name="FightingAnimal" type="Control" unique_id=1925862657 node_paths=PackedStringArray("render", "damageSpawner", "healthSpawner", "attackSpawner")]

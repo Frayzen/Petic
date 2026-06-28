@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://my87v40ha220"]
 
-[ext_resource type="Script" uid="uid://dxb1lknp50o76" path="res://scripts/indicator.gd" id="1_it1jt"]
+[ext_resource type="Script" uid="uid://dxb1lknp50o76" path="res://scripts/utils/indicator.gd" id="1_it1jt"]
 [ext_resource type="Texture2D" uid="uid://dp0xk17rlpewn" path="res://ui/icons/heart.png" id="2_it1jt"]
 [ext_resource type="LabelSettings" uid="uid://wcpshwhrddg" path="res://settings/label_indicator.tres" id="2_rs0jx"]
 
